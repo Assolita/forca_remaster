@@ -307,10 +307,10 @@ header{
   }
 }
 
-/* @media (max-width: 1366px){
+@media (max-width: 1366px){
   .sessao-container{ 
     max-width: 95vw; 
-    min-height: auto; 
+    min-height: 420px; 
     padding: 24px 20px; 
   }
   .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
@@ -320,7 +320,7 @@ header{
     font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     padding: clamp(14px, 2vw, 18px);
   }
-} */
+}
 
 @media (max-width: 720px){
   .sessao-container{ 
