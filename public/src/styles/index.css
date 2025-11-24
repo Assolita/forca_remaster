@@ -301,9 +301,10 @@ header{
 
 @media (max-width: 1366px){
   .sessao-container{ 
-    max-width: 95vw; 
-    min-height: auto; 
+    width: 500px; 
+    height: 360px; 
     padding: 24px 20px; 
+  }
   }
   .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
   .icon-img img{ width: clamp(70px, 8vw, 100px); }
