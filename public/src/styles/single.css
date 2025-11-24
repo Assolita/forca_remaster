@@ -253,7 +253,7 @@ body::after{
 .lives {
   margin-top: 4px;
   display: flex;
-  gap: 6px;
+  gap: 16px;
 }
 
 .life-heart {
