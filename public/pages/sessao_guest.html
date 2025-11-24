@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sessão - Jogo da Forca</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="public/src/styles/sessao_guest.css">
+  <link rel="stylesheet" href="public/src/styles/animations.css">
+  <link rel="stylesheet" href="/public/src/styles/footer.css">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <a href="menu.html" class="btn-voltar" aria-label="Voltar ao menu">
+      <img src="/public/assets/images/key.png" alt="back button">
+    </a>
+    
+    <div class="icon-img">
+      <img src="public/assets/images/bob1.png" alt="">
+    </div>
+
+    <div class="fonte_titulo">Sessão</div>
+
+    <div class="icon-img">
+      <img src="public/assets/images/patrick1.png" alt="">
+    </div>
+  </header>
+
+  <!-- LOGIN -->
+  <div class="login-container">
+
+    <div class="form-group">
+      <label for="codigo">Código</label>
+      <input type="codigo" id="codigo" placeholder="Digite o código" class="input-field">
+    </div>
+
+
+    <button class="login-button">
+      <span class="button-text">Entrar</span>
+    </button>
+
+
+  </div>
+  <footer>
+      <div id="footer">
+          <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+          <ul>
+              <li><a href="./about us.html">diagramas</a></li>
+              <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+              <li><a href="./regras.html">regras</a></li>
+          </ul>
+          <ul class="links">
+              <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+              <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+          </ul>
+
+      </div>
+  </footer>
+    <script src="/public/src/js/buttonAnimation.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/public/src/js/socket.js"></script>
+    <script type="module" src="/public/src/js/sessao_guest.js"></script>
+</body>
+</html>
+
+
+
+
+
+

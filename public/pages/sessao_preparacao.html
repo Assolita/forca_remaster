@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sessão - Sala de Espera</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap">
+    <link rel="stylesheet" href="/public/src/styles/sessao_preparacao.css">
+    <link rel="stylesheet" href="/public/src/styles/animations.css">
+    <link rel="stylesheet" href="/public/src/styles/footer.css">
+
+    <style>
+       
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="icon-img">
+            <img src="/public/assets/images/bob1.png" alt="Ícone Jogo da Forca">
+        </div>
+        
+        <div class="titulo-sessao">EM SESSÃO</div>
+
+        <div class="icon-img">
+            <img src="/public/assets/images/patrick1.png" alt="Ícone Jogo da Forca">
+        </div>
+    </header>
+
+    <div class="sessao-container">
+        <div class="jogadores">
+            <!-- Jogador 1 -->
+            <div class="jogador">
+                <h2>Jogador 1</h2>
+                <div class="poderes-container">
+                    <button class="poder" type="button" aria-label="Dica">
+                        <img src="/public/assets/images/liberar_letra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Tempo +">
+                        <img src="/public/assets/images/ocultar_dica.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Pular">
+                        <img src="/public/assets/images/ocultar_letra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Revelar Letra">
+                        <img src="/public/assets/images/Tirar_vida.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Congelar">
+                        <img src="/public/assets/images/vida_extra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Barreira">
+                        <img src="/public/assets/images/palpite.png" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Jogador 2 -->
+            <div class="jogador">
+                <h2>Jogador 2</h2>
+                <div class="poderes-container">
+                    <button class="poder" type="button" aria-label="Dica">
+                        <img src="/public/assets/images/liberar_letra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Tempo +">
+                        <img src="/public/assets/images/ocultar_dica.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Pular">
+                        <img src="/public/assets/images/ocultar_letra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Revelar Letra">
+                        <img src="/public/assets/images/Tirar_vida.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Congelar">
+                        <img src="/public/assets/images/vida_extra.png" alt="">
+                    </button>
+                    <button class="poder" type="button" aria-label="Barreira">
+                        <img src="/public/assets/images/palpite.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Código -->
+        <div class="codigo-container">
+            Código:
+            <span>CDVDFHG</span>
+        </div>
+
+        <!-- Contador -->
+        <div class="contador">( 0 / 2 )</div>
+
+        <!-- Sistema de Apostas -->
+        <div class="aposta-container">
+            <div class="aposta-header">
+                <h3>💰 Sistema de Apostas</h3>
+                <div class="saldo-moedas">
+                    <span class="saldo-label">Seu saldo:</span>
+                    <span class="saldo-valor" id="saldo-moedas">-</span>
+                    <span class="moeda-icon">🪙</span>
+                </div>
+            </div>
+            <div class="aposta-input-container">
+                <label for="input-aposta">Valor da aposta:</label>
+                <div class="aposta-input-wrapper">
+                    <input 
+                        type="number" 
+                        id="input-aposta" 
+                        min="0" 
+                        value="0" 
+                        placeholder="0"
+                        class="aposta-input"
+                    >
+                    <span class="moeda-icon-input">🪙</span>
+                </div>
+                <div class="aposta-buttons">
+                    <button class="btn-aposta-quick" data-value="10">+10</button>
+                    <button class="btn-aposta-quick" data-value="25">+25</button>
+                    <button class="btn-aposta-quick" data-value="50">+50</button>
+                    <button class="btn-aposta-quick" data-value="100">+100</button>
+                </div>
+                <div class="aposta-info">
+                    <p class="aposta-mensagem" id="aposta-mensagem">Aposta: 0 moedas</p>
+                    <p class="aposta-adversario" id="aposta-adversario">Aguardando adversário...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão -->
+        <button class="botao-pronto">Pronto</button>
+    </div>
+    <footer>
+        <div id="footer">
+            <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+            <ul>
+                <li><a href="./about us.html">diagramas</a></li>
+                <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+                <li><a href="./regras.html">regras</a></li>
+            </ul>
+            <ul class="links">
+                <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+                <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+            </ul>
+
+        </div>
+    </footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/public/src/js/socket.js"></script>
+    <script type="module" src="/public/src/js/sessao_preparacao.js"></script>
+</body>
+</html>

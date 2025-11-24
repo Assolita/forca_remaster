@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vitória - Jogo da Forca</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/public/src/styles/win.css">
+  <link rel="stylesheet" href="/public/src/styles/animations.css">
+  <link rel="stylesheet" href="/public/src/styles/footer.css">
+
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+  </style>
+</head>
+
+<body>
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="icon-img">
+      <img src="/public/assets/images/bob1.png" alt="">
+    </div>
+    <div class="fonte_titulo">VITÓRIA</div>
+    <div class="icon-img">
+      <img src="/public/assets/images/patrick1.png" alt="">
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="win-container">
+    <!-- Imagem grande -->
+    <div class="win-image">
+      <!-- Suba sua imagem aqui -->
+      <video id="win-video" autoplay muted loop playsinline>
+        <source src="/public/assets/videos/win.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Botão redondo -->
+    <button class="home-button" onclick="window.location.replace('/menu.html')">
+      <i class="fas fa-home"></i>
+    </button>
+  </main>
+  <footer>
+    <div id="footer">
+        <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+        <ul>
+            <li><a href="./about us.html">diagramas</a></li>
+            <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+            <li><a href="./regras.html">regras</a></li>
+        </ul>
+        <ul class="links">
+            <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+            <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+        </ul>
+
+    </div>
+  </footer>
+
+</body>
+
+

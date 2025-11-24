@@ -1,0 +1,266 @@
+/* ===========================
+   PÁGINA FIXA (SEM SCROLL)
+   =========================== */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ===========================
+   Fundo e estrutura
+   =========================== */
+body {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  color: white;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
+    url("/public/assets/images/aboutUsback.png") center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===========================
+   Header
+   =========================== */
+header {
+  width: 100%;
+  padding: 40px 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon-img img {
+  width: 90px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+}
+
+.fonte_titulo {
+  font-size: clamp(2rem, 8vw, 6rem);
+  font-weight: 700;
+  color: #e9fbff;
+  text-shadow: 0 2px 4px rgba(0,0,0,.4), 0 0 20px rgba(0,229,255,.4);
+}
+
+/* ===========================
+   Grid dos membros
+   =========================== */
+.team-container {
+  width: min(1200px, 90vw);
+  height: 55vh;                    /* altura fixa */
+  overflow: hidden;                /* impede scroll do usuário */
+  padding: 20px;
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  border: 2px solid rgba(255,255,255,.35);
+  backdrop-filter: blur(5px);
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06));
+  border: 2px solid rgba(255,255,255,.25);
+  cursor: pointer;
+  transition: .2s;
+}
+
+.team-member:hover {
+  transform: translateY(-4px);
+  border-color: white;
+  filter: brightness(1.1);
+}
+
+.team-member img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.team-member span {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Último integrante */
+.last-member {
+  grid-column: 1 / 4;
+  justify-self: center;
+  width: 35%;
+  gap: 80px;
+}
+
+/* ===========================
+   Botão "discover us!"
+   =========================== */
+.discover-btn {
+  margin: 20px 0 40px;
+  padding: 20px 40px;
+  border-radius: 50px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  background:
+    radial-gradient(120% 180% at 30% 20%, rgba(255,255,255,.45), rgba(255,255,255,.1) 45%, rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #00E5FF, #00bcd4);
+  border: none;
+  box-shadow: 0 10px 22px rgba(0,229,255,.28), 0 8px 0 rgba(0,0,0,.25);
+  transition: .2s;
+}
+
+.discover-btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-voltar {
+  position: absolute;
+  left: clamp(12px, 6vw, 100px);
+  font-size: 2.2rem;
+  color: #e9fbff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform .06s ease;
+}
+
+.btn-voltar:hover { 
+  color: #cfefff; 
+  transform: translateX(-1px); 
+}
+.btn-voltar img {
+  width: clamp(60px, 10vw, 150px);   /* tamanho responsivo */
+  height: auto;
+  display: block;                 /* remove espaçamento inline indesejado */
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.btn-voltar:hover img {
+  transform: scale(1.1) scaleX(-1);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,1))
+          drop-shadow(0 0 16px rgba(255,255,255,0.7));
+}
+
+/* ===========================
+   MODAL (popup)
+   =========================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(3px);
+}
+
+.modal-box {
+  position: relative;
+  margin: 10vh auto;
+  width: min(600px, 90vw);
+  height: 60vh;                /* fixa */
+  padding: 30px;
+  overflow: hidden;
+
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,.35);
+  background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  backdrop-filter: blur(6px);
+}
+
+/* Conteúdo rolável */
+.modal-content {
+  height: 70%;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.close-modal {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 40px;
+  border: 2px solid rgba(255,255,255,.35);
+  color: white;
+  background: linear-gradient(180deg, rgba(255,255,255,.20), rgba(255,255,255,.06));
+  cursor: pointer;
+  font-weight: 700;
+}
+/* ===== Estado de campanha: integrante concluído ===== */
+.team-member.completed {
+  position: relative;
+  background:
+    radial-gradient(140% 200% at 30% 0%, rgba(0,229,255,.35), rgba(0,229,255,.10) 55%, rgba(0,229,255,0) 60%),
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,.10));
+  border-color: rgba(0,229,255,.9);
+  box-shadow:
+    0 0 25px rgba(0,229,255,.7),
+    0 0 80px rgba(0,229,255,.4),
+    0 10px 24px rgba(0,0,0,.55);
+  overflow: hidden;
+}
+
+/* glow de partículas girando */
+.team-member.completed::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,.25) 0, transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(0,229,255,.35) 0, transparent 55%),
+    radial-gradient(circle at 30% 80%, rgba(0,188,212,.25) 0, transparent 55%);
+  opacity: 0.8;
+  mix-blend-mode: screen;
+  animation: particulasGlass 10s linear infinite;
+  pointer-events: none;
+}
+
+.team-member.completed::after {
+  content: "COMPLETED";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: rgba(0,0,0,.65);
+  border: 1px solid rgba(255,255,255,.6);
+  box-shadow: 0 0 10px rgba(0,229,255,.8);
+}
+
+.team-member.completed img {
+  filter: none;
+  box-shadow: 0 0 18px rgba(0,229,255,.8);
+}
+
+@keyframes particulasGlass {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.team-member:not(.completed) img {
+  filter: grayscale(0.3) brightness(0.9);
+}

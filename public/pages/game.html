@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tela de Jogo - Jogo da Forca</title>
+    <link rel="stylesheet" href="/public/src/styles/game.css">
+    <link rel="stylesheet" href="/public/src/styles/animations.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+    </style>
+    <link rel="preload" href="/public/assets/images/profissoesback.png" as="image">
+    <link rel="preload" href="/public/assets/images/alimentosback.png" as="image">
+    <link rel="preload" href="/public/assets/images/animaisback.png" as="image">
+    <link rel="preload" href="/public/assets/images/paisesback.png" as="image">
+    <link rel="preload" href="/public/assets/images/esportesback.png" as="image">
+
+</head>
+<body>
+    <div class="pre-game-wrapper">
+        <header class="pre-header">
+            <div class="icon-img">
+                <img src="/public/assets/images/bob1.png" alt="Ícone Jogo da Forca">
+            </div>
+            <div class="titulo-sessao">EM SESSÃO</div>
+            <div class="icon-img">
+                <img src="/public/assets/images/patrick1.png" alt="Ícone Jogo da Forca">
+            </div>
+        </header>
+
+        <div class="sessao-container">
+            <div class="jogadores-prep">
+                <div class="jogador-prep" id="jogador-prep-atual">
+                    <h2 id="nome-jogador-prep">Selecione seus poderes</h2>
+                    
+                    <!-- Sistema de Apostas -->
+                    <div class="aposta-container-prep">
+                        <div class="aposta-header-prep">
+                            <h3>💰 Aposta</h3>
+                            <div class="saldo-moedas-prep">
+                                <span class="saldo-label-prep">Saldo:</span>
+                                <span class="saldo-valor-prep" id="saldo-moedas-prep">-</span>
+                                <span class="moeda-icon-prep">🪙</span>
+                            </div>
+                        </div>
+                        <div class="aposta-input-container-prep">
+                            <div class="aposta-input-wrapper-prep">
+                                <input 
+                                    type="number" 
+                                    id="input-aposta-prep" 
+                                    min="0" 
+                                    value="0" 
+                                    placeholder="0"
+                                    class="aposta-input-prep"
+                                >
+                                <span class="moeda-icon-input-prep">🪙</span>
+                            </div>
+                            <div class="aposta-buttons-prep">
+                                <button class="btn-aposta-quick-prep" data-value="10">+10</button>
+                                <button class="btn-aposta-quick-prep" data-value="25">+25</button>
+                                <button class="btn-aposta-quick-prep" data-value="50">+50</button>
+                                <button class="btn-aposta-quick-prep" data-value="100">+100</button>
+                            </div>
+                            <div class="aposta-info-prep">
+                                <p class="aposta-mensagem-prep" id="aposta-mensagem-prep">Aposta: 0 moedas</p>
+                                <p class="aposta-adversario-prep" id="aposta-adversario-prep">Aguardando adversário...</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="instrucao-poderes">Escolha até 3 poderes (opcional)</p>
+                    <div class="poderes-container" id="poderes-container-atual">
+                        <button class="poder" type="button" data-poder="liberar_letra" aria-label="Liberar Letra">
+                            <img src="/public/assets/images/liberar_letra.png" alt="Liberar Letra">
+                        </button>
+                        <button class="poder" type="button" data-poder="ocultar_dica" aria-label="Ocultar Dica">
+                            <img src="/public/assets/images/ocultar_dica.png" alt="Ocultar Dica">
+                        </button>
+                        <button class="poder" type="button" data-poder="ocultar_letra" aria-label="Ocultar Letra">
+                            <img src="/public/assets/images/ocultar_letra.png" alt="Ocultar Letra">
+                        </button>
+                        <button class="poder" type="button" data-poder="tirar_vida" aria-label="Tirar Vida">
+                            <img src="/public/assets/images/Tirar_vida.png" alt="Tirar Vida">
+                        </button>
+                        <button class="poder" type="button" data-poder="vida_extra" aria-label="Vida Extra">
+                            <img src="/public/assets/images/vida_extra.png" alt="Vida Extra">
+                        </button>
+                        <button class="poder" type="button" data-poder="palpite" aria-label="Palpite">
+                            <img src="/public/assets/images/palpite.png" alt="Palpite">
+                        </button>
+                    </div>
+                    <div class="contador-selecionados">Selecionados: <span id="contador-selecionados">0</span> / 3</div>
+                </div>
+            </div>
+
+            <div class="codigo-container">
+                Código:
+                <span data-codigo-sala>-----</span>
+            </div>
+
+            <div class="contador">( 0 / 2 )</div>
+
+            <button class="botao-pronto" type="button">Pronto</button>
+        </div>
+    </div>
+
+    <div class="jogo-container hidden">
+        <!-- Área de dicas -->
+        <div class="dica-container" id="dica-container">
+            <!-- Dicas serão adicionadas dinamicamente aqui -->
+        </div>
+        
+        <!-- Linha superior: Jogadores e vidas -->
+        <div class="jogo-top">
+            <div class="jogador">
+                <h2>Jogador 1</h2>
+                <div class="vidas">
+                    <!-- Vidas serão inseridas dinamicamente (suporta até 4 com vida extra) -->
+                </div>
+            </div>
+            <div class="jogador">
+                <div class="vidas">
+                    <!-- Vidas serão inseridas dinamicamente (suporta até 4 com vida extra) -->
+                </div>
+                <h2>Jogador 2</h2>
+            </div>
+        </div>
+
+        <!-- Bonecos -->
+        <div class="bonecos">
+            <div class="boneco">
+                <!-- Suba imagem do boneco -->
+                <img src="/public/assets/images/bob1.png" alt="">
+            </div>
+            <div class="boneco">
+                <!-- Suba imagem do boneco -->
+                <img src="/public/assets/images/patrick1.png" alt="">
+            </div>
+        </div>
+
+        <!-- Categoria e tempo -->
+        <div class="info-central">
+            <div class="categoria">Categoria X</div>
+            <div class="tempo">15s</div>
+            <div class="versus">Vs</div>
+            <div id="carta" class="carta">
+                <video id="videoCarta" width="250"></video>
+            </div>
+        </div>
+        </div>
+
+        <!-- Palavras -->
+        <div class="palavras">
+            <div class="palavra-container">
+                <div class="dica-palavra" id="dica-palavra-jogador1"></div>
+                <div class="palavra">_ _ _ _ _ _ _</div>
+            </div>
+            <div class="palavra-container">
+                <div class="dica-palavra" id="dica-palavra-jogador2"></div>
+                <div class="palavra">_ _ _ _ _ _ _</div>
+            </div>
+        </div>
+
+        <!-- Poderes + Teclado -->
+        <div class="area-inferior">
+            <div class="poderes-section">
+                <div class="poderes-header">
+                    <span class="poderes-titulo">Meus Poderes</span>
+                    <span class="poderes-contador" id="poderes-contador-display">0/3</span>
+                </div>
+                <div class="poderes-jogador" id="poderes-jogador-container">
+                    <!-- Poderes serão inseridos dinamicamente aqui -->
+                </div>
+            </div>
+            
+            <div class="teclado-container-wrapper">
+                <div class="teclado">
+                    <div class="linha-teclado">
+                    <button class="tecla">A</button>
+                    <button class="tecla">B</button>
+                    <button class="tecla">C</button>
+                    <button class="tecla">D</button>
+                    <button class="tecla">E</button>
+                    <button class="tecla">F</button>
+                    <button class="tecla">G</button>
+                    <button class="tecla">H</button>
+                    <button class="tecla">I</button>
+                    <button class="tecla">J</button>
+                    </div>
+                    <div class="linha-teclado">
+                    <button class="tecla">K</button>
+                    <button class="tecla">L</button>
+                    <button class="tecla">M</button>
+                    <button class="tecla">N</button>
+                    <button class="tecla">O</button>
+                    <button class="tecla">P</button>
+                    <button class="tecla">Q</button>
+                    <button class="tecla">R</button>
+                    <button class="tecla">S</button>
+                    <button class="tecla">T</button>
+                    </div>
+                    <div class="linha-teclado">
+                    <button class="tecla">U</button>
+                    <button class="tecla">V</button>
+                    <button class="tecla">W</button>
+                    <button class="tecla">X</button>
+                    <button class="tecla">Y</button>
+                    <button class="tecla">Z</button>
+                    </div>
+                    <div class="linha-teclado">
+                    <button class="tecla">-</button>
+                    <button class="tecla">Ç</button>
+                    </div>
+                </div>
+                <button class="btn-chutar-palavra" id="btn-chutar-palavra" title="Chutar palavra completa" aria-label="Chutar palavra completa">
+                    <i class="fa fa-keyboard"></i>
+                    <span class="btn-chutar-texto">Chutar</span>
+                </button>
+                <button class="btn-dica" id="btn-dica" title="Pedir dica (perde a vez)" aria-label="Pedir dica">
+                    <i class="fa fa-lightbulb"></i>
+                    <span class="btn-dica-texto">Dica</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de chute de palavra completa -->
+    <div class="modal-chute-palavra" id="modal-chute-palavra">
+        <div class="modal-chute-palavra-content">
+            <div class="modal-chute-palavra-header">
+                <h3 class="modal-chute-palavra-title">Chutar Palavra Completa</h3>
+                <p class="modal-chute-palavra-subtitle">Digite a palavra que você acha que está na forca</p>
+                <div class="timer-chute-palavra-container">
+                    <span class="timer-chute-palavra" id="timer-chute-palavra" style="display: none;">15s</span>
+                </div>
+            </div>
+            <div class="modal-chute-palavra-input-container">
+                <input 
+                    type="text" 
+                    id="input-chute-palavra" 
+                    class="modal-chute-palavra-input" 
+                    placeholder="Digite a palavra..."
+                    maxlength="50"
+                    autocomplete="off"
+                />
+            </div>
+            <div class="modal-chute-palavra-actions">
+                <button class="modal-chute-palavra-btn modal-chute-palavra-btn-confirmar" id="btn-confirmar-chute">
+                    Confirmar
+                </button>
+                <button class="modal-chute-palavra-btn modal-chute-palavra-btn-cancelar" id="btn-cancelar-chute">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/public/src/js/socket.js"></script>
+    <script type="module" src="/public/src/js/game.js"></script>
+</body>
+
+</html>
+

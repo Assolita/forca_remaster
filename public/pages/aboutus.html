@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — Jogo da Forca</title>
+
+  <!-- Ícones + fontes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/public/src/styles/animations.css" />
+  <link rel="stylesheet" href="/public/src/styles/footer.css">
+  <link rel="stylesheet" href="/public/src/styles/aboutus.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="icon-img"><img src="/public/assets/images/bob1.png" alt="Bob"></div>
+    <div class="fonte_titulo">ABOUT US</div>
+    <div class="icon-img"><img src="/public/assets/images/patrick1.png" alt="Patrick"></div>
+    <a href="menu.html" class="btn-voltar" aria-label="Voltar ao menu">
+      <img src="/public/assets/images/key.png" alt="back button">
+    </a>
+  </header>
+
+  <main class="team-container">
+
+    <!-- 10 membros com IDs fixos (1..10) -->
+    <div class="team-member" data-id="1" data-name="Membro 1">
+      <img src="/public/assets/images/user1.png" alt="Membro 1">
+      <span>Membro 1</span>
+    </div>
+
+    <div class="team-member" data-id="2" data-name="Membro 2">
+      <img src="/public/assets/images/user2.png" alt="Membro 2">
+      <span>Membro 2</span>
+    </div>
+
+    <div class="team-member" data-id="3" data-name="Membro 3">
+      <img src="/public/assets/images/user3.png" alt="Membro 3">
+      <span>Membro 3</span>
+    </div>
+
+    <div class="team-member" data-id="4" data-name="Membro 4">
+      <img src="/public/assets/images/user4.png" alt="Membro 4">
+      <span>Membro 4</span>
+    </div>
+
+    <div class="team-member" data-id="5" data-name="Membro 5">
+      <img src="/public/assets/images/user5.png" alt="Membro 5">
+      <span>Membro 5</span>
+    </div>
+
+    <div class="team-member" data-id="6" data-name="Membro 6">
+      <img src="/public/assets/images/user6.png" alt="Membro 6">
+      <span>Membro 6</span>
+    </div>
+
+    <div class="team-member" data-id="7" data-name="Membro 7">
+      <img src="/public/assets/images/user7.png" alt="Membro 7">
+      <span>Membro 7</span>
+    </div>
+
+    <div class="team-member" data-id="8" data-name="Membro 8">
+      <img src="/public/assets/images/user8.png" alt="Membro 8">
+      <span>Membro 8</span>
+    </div>
+
+    <div class="team-member" data-id="9" data-name="Membro 9">
+      <img src="/public/assets/images/user9.png" alt="Membro 9">
+      <span>Membro 9</span>
+    </div>
+
+    <div class="team-member last-member" data-id="10" data-name="Membro 10">
+      <img src="/public/assets/images/user10.png" alt="Membro 10">
+      <span>Membro 10</span>
+    </div>
+
+  </main>
+
+  <button class="discover-btn" type="button">discover us!</button>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-bg"></div>
+
+    <div class="modal-box">
+      <h2 id="modal-nome"></h2>
+
+      <div class="modal-content">
+        <p id="modal-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula justo sed ligula
+          molestie, vel cursus lorem gravida.
+        </p>
+      </div>
+
+      <span class="close-modal">Fechar</span>
+    </div>
+  </div>
+
+  <footer>
+      <div id="footer">
+          <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+          <ul>
+              <li><a href="./about us.html">diagramas</a></li>
+              <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+              <li><a href="./regras.html">regras</a></li>
+          </ul>
+          <ul class="links">
+              <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+              <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+          </ul>
+
+      </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="/public/src/js/aboutus.js"></script>
+</body>
+</html>

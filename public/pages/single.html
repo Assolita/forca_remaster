@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campanha — Jogo da Forca</title>
+  <link rel="stylesheet" href="/public/src/styles/single.css">
+  <link rel="stylesheet" href="/public/src/styles/animations.css">
+  <link rel="stylesheet" href="/public/src/styles/footer.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+  </style>
+</head>
+
+<body>
+  <header class="single-header">
+    <div class="icon-img">
+      <img src="/public/assets/images/bob1.png" alt="Bob">
+    </div>
+    <div class="single-title">
+      <span class="subtitle">Discover Us!</span>
+      <span class="main-title">MODO CAMPANHA</span>
+      <span class="person-label">Desafio: <span id="person-name">---</span></span>
+    </div>
+    <div class="icon-img">
+      <img src="/public/assets/images/patrick1.png" alt="Patrick">
+    </div>
+  </header>
+
+  <div class="single-wrapper">
+
+
+    <main class="single-main">
+      <!-- Painel esquerdo: avatar + progresso + vidas + dica -->
+      <section class="profile-panel">
+        <div class="avatar-wrapper">
+          <div class="avatar-glow"></div>
+          <img id="person-avatar" src="/public/assets/images/user1.png" alt="Avatar integrante">
+        </div>
+        <div class="progress-info">
+          <div class="progress-line">
+            <span id="progress-words-label"></span>
+            <span id="progress-words-count"></span>
+          </div>
+          <div class="progress-bar">
+            <div id="progress-words-bar-inner" class="progress-bar-inner"></div>
+          </div>
+        </div>
+
+        <div class="progress-info">
+          <div class="progress-line">
+            <span id="progress-campaign-label"></span>
+            <span id="progress-count"></span>
+          </div>
+          <div class="progress-bar">
+            <div id="progress-bar-inner" class="progress-bar-inner"></div>
+          </div>
+        </div>
+
+
+
+        <div class="hint-box">
+          <div class="hint-header">
+            <span>Dica</span>
+            <button id="hint-btn" type="button">Mostrar dica</button>
+          </div>
+          <p id="hint-text" class="hint-text">Use as letras para descobrir o nome deste integrante.</p>
+        </div>
+      </section>
+
+      <!-- Painel central: palavra + controles -->
+      <section class="word-panel">
+        <div class="lerolero">
+          <span id="leroelero">HAHAHAHAHAHAH</span>
+        </div>
+        <div class="lives-container">
+          <span class="lives-label">Vidas</span>
+          <div id="lives" class="lives"></div>
+        </div>
+        <div class="word-display-container">
+          <div id="word-display" class="word-display">_ _ _ _</div>
+        </div>
+
+        <div class="controls-row">
+          <button id="guess-word-btn" type="button" class="primary-btn">
+            Chutar palavra
+          </button>
+          <button id="back-btn" type="button" class="ghost-btn">
+            Voltar ao About Us
+          </button>
+        </div>
+      </section>
+
+      <!-- Painel inferior: teclado -->
+      <!-- <section class="keyboard-panel">
+        <div id="keyboard" class="keyboard"></div>
+        <p class="keyboard-hint">
+          Você também pode usar o teclado físico para chutar letras.
+        </p>
+      </section> -->
+      <section class="keyboard-panel">
+        <div id="keyboard" class="keyboard-area">
+            <div class="keyboard-row" id="row-1"></div>
+            <div class="keyboard-row" id="row-2"></div>
+            <div class="keyboard-row" id="row-3"></div>
+            <div class="keyboard-row" id="row-4"></div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Overlay de resultado -->
+    <div id="result-overlay" class="result-overlay hidden">
+      <div class="result-card">
+        <h2 id="result-title">Parabéns!</h2>
+        <p id="result-message"></p>
+        <div class="result-actions">
+          <button id="go-about-btn" type="button" class="ghost-btn">
+            Voltar ao About Us
+          </button>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <footer>
+      <div id="footer">
+          <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+          <ul>
+              <li><a href="./about us.html">diagramas</a></li>
+              <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+              <li><a href="./regras.html">regras</a></li>
+          </ul>
+          <ul class="links">
+              <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+              <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+          </ul>
+
+      </div>
+  </footer>
+
+  <script src="/public/src/js/single.js"></script>
+</body>
+</html>

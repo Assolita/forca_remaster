@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regras — Jogo da Forca</title>
+
+  <!-- Ícones -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Estilos do tema -->
+  <link rel="stylesheet" href="/public/src/styles/regras.css" />
+  <link rel="stylesheet" href="/public/src/styles/animations.css" />
+  <link rel="stylesheet" href="/public/src/styles/footer.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="menu.html" class="btn-voltar" aria-label="Voltar ao menu">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+
+    <div class="icon-img">
+      <img src="public/assets/images/bob1.png" alt="Bob Esponja - Jogo da Forca">
+    </div>
+
+    <h1 class="fonte_titulo">REGRAS</h1>
+
+    <div class="icon-img">
+      <img src="public/assets/images/patrick1.png" alt="Patrick - Jogo da Forca">
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="regras-container" role="main">
+    <section class="regras-intro">
+      <h2><i class="fa-solid fa-scroll"></i> Visão geral</h2>
+      <p>
+        Bem-vindo ao <strong>Jogo da Forca</strong>! Aqui você enfrenta outras pessoas
+        tentando adivinhar palavras antes que o boneco seja enforcado. Enquanto joga,
+        você ganha <strong>vitórias</strong>, sobe no <strong>ranking</strong> e pode usar
+        <strong>poderes especiais</strong> comprados na loja.
+      </p>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-bullseye"></i> Objetivo</h2>
+      <p>
+        O objetivo é <strong>descobrir a palavra secreta</strong> antes de atingir o
+        número máximo de erros permitido. Cada letra certa revela parte da palavra;
+        cada erro aproxima o boneco do enforcamento.
+      </p>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-gamepad"></i> Como funciona uma partida</h2>
+      <ol class="regras-lista">
+        <li>
+          <strong>Início da partida:</strong> ao clicar em <strong>JOGAR</strong> no menu,
+          você entra em uma sessão da forca.
+        </li>
+        <li>
+          <strong>Palavra secreta:</strong> o sistema sorteia uma palavra e exibe apenas os
+          espaços (traços) na tela.
+        </li>
+        <li>
+          <strong>Chutes de letras:</strong> você escolhe uma letra por vez. Se ela existir
+          na palavra, aparece nas posições corretas; se estiver errada, conta como erro.
+        </li>
+        <li>
+          <strong>Limite de erros:</strong> existe um número máximo de erros. Ao atingir esse
+          limite, você <span class="texto-derrota">perde a partida</span>.
+        </li>
+        <li>
+          <strong>Vitória:</strong> você vence quando adivinha todas as letras da palavra
+          antes de estourar o limite de erros.
+        </li>
+      </ol>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-bolt"></i> Poderes e Loja</h2>
+      <p>
+        Na <strong>Loja</strong>, você usa suas moedas para comprar poderes especiais.
+        Alguns exemplos de poderes (dependendo da configuração do jogo):
+      </p>
+      <ul class="regras-lista">
+        <li><strong>Dica:</strong> revela uma letra correta da palavra.</li>
+        <li><strong>Bloqueio de erro:</strong> ignora o próximo erro que você cometer.</li>
+        <li><strong>Revelar posição:</strong> destaca uma posição da palavra que
+          ainda não foi descoberta.</li>
+      </ul>
+      <p>
+        Cada poder tem um <strong>custo em moedas</strong>. Ao comprar, ele fica
+        disponível para ser usado nas partidas (desde que você tenha saldo suficiente).
+      </p>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-coins"></i> Moedas</h2>
+      <ul class="regras-lista">
+        <li>Moedas podem ser obtidas jogando e vencendo partidas (quando habilitado).</li>
+        <li>Você pode <strong>comprar moedas</strong> pela interface da Loja
+            (simulação de compra).</li>
+        <li>O saldo atual aparece no canto superior das páginas de Loja.</li>
+        <li>Ao comprar um poder, o valor em moedas é automaticamente descontado.</li>
+      </ul>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-ranking-star"></i> Ranking</h2>
+      <p>
+        O <strong>Ranking</strong> mostra os jogadores com mais vitórias.
+      </p>
+      <ul class="regras-lista">
+        <li>
+          Cada vitória em uma partida válida contabiliza <strong>+1 vitória</strong> no seu
+          perfil.
+        </li>
+        <li>
+          A tela de ranking exibe a <strong>posição</strong>, o <strong>nome</strong> e o
+          número de <strong>vitórias</strong> de cada jogador.
+        </li>
+        <li>
+          O <strong>Top 3</strong> recebe destaque visual especial.
+        </li>
+      </ul>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-shield-halved"></i> Regras de Fair Play</h2>
+      <ul class="regras-lista">
+        <li>Não compartilhe seu token ou credenciais com outras pessoas.</li>
+        <li>Evite uso de bots ou scripts externos para jogar automaticamente.</li>
+        <li>Qualquer tentativa de burlar o sistema pode levar à perda de progresso.</li>
+      </ul>
+    </section>
+
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-circle-info"></i> Dúvidas e melhorias</h2>
+      <p>
+        Este jogo está em constante evolução. Novos poderes, modos de jogo e ajustes
+        de balanceamento podem ser adicionados. Fique de olho no menu e na Loja para
+        novidades.
+      </p>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (mesmo padrão das outras páginas) ===== -->
+  <footer>
+      <div id="footer">
+          <a href="./menu.html"><img src="/public/assets/images/lua.png" alt="HOME" /> </a>
+          <ul>
+              <li><a href="./about us.html">diagramas</a></li>
+              <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+              <li><a href="./regras.html">regras</a></li>
+          </ul>
+          <ul class="links">
+              <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+              <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+          </ul>
+
+      </div>
+  </footer>
+
+</body>
+</html>
