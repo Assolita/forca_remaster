@@ -37,8 +37,7 @@ body{
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
     url("../../assets/images/coraline.png") center / cover no-repeat;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 body {
@@ -163,7 +162,7 @@ header{
   margin-top: 20px;
   justify-content: center;
 
-  min-height: 460px;
+  max-height: 460px;
 
   background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
   border: 2px solid var(--glass-brd);
