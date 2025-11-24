@@ -13,27 +13,27 @@ const PERSONS = [
     imagem: "/public/assets/images/user1.png",
     palavras: [
       {
-        termo: "ALGA",
+        termo: "Chorona",
         dicas: [
-          "Planta marinha muito comum.",
-          "Pode ser verde ou marrom.",
-          "Está presente em diversos ambientes aquáticos."
+          "Particípio como adjetivo",
+          "18/11/2025",
+          "'Nao levanta a voz pra mim!' - VITÃO"
         ]
       },
       {
-        termo: "CORAL",
+        termo: "Gwen",
         dicas: [
-          "Forma belas estruturas no fundo do mar.",
-          "Vive em colônias.",
-          "Muito presente em recifes tropicais."
+          "Tesoura",
+          "Isolde",
+          "Tatuagem"
         ]
       },
       {
-        termo: "BOLHAS",
+        termo: "Inovabra",
         dicas: [
-          "Sempre sobem à superfície.",
-          "Associadas à água ou sabão.",
-          "Objeto visual recorrente do seu jogo."
+          "pesquisa e inovação",
+          "Analista",
+          "linkedin"
         ]
       }
     ]
@@ -44,9 +44,9 @@ const PERSONS = [
     nome: "Membro 2",
     imagem: "/public/assets/images/user2.png",
     palavras: [
-      { termo: "CODIGO", dicas: ["Conjunto de instruções.", "Base de qualquer software.", "Algo que todo programador cria."] },
-      { termo: "DEV", dicas: ["Profissão do futuro.", "Resolve problemas lógicos.", "Termo curto e comum."] },
-      { termo: "GIT", dicas: ["Ferramenta de versionamento.", "Muito usada no GitHub.", "Ajuda equipes inteiras a colaborar."] }
+      { termo: "Testando", dicas: ["Verbo no gerúndio", "Crucial para que dê certo", "não consigo testar se nao tiver pronto"] },
+      { termo: "Viagem", dicas: ["ausente por motivo dê:", "", "'não viaja porra!' - VITÃO"] },
+      { termo: "QA-Analyst", dicas: ["testes manuais", "200DEV", "linkedin"] }
     ]
   },
 
@@ -55,9 +55,9 @@ const PERSONS = [
     nome: "Membro 3",
     imagem: "/public/assets/images/user3.png",
     palavras: [
-      { termo: "MAR", dicas: ["Extremamente azul.", "Cobre grande parte do planeta.", "Casa de diversos animais."] },
-      { termo: "PEIXE", dicas: ["Animal aquático.", "Respira por brânquias.", "Pode ser encontrado em rios e mares."] },
-      { termo: "SEREIA", dicas: ["Criatura mitológica.", "Meio humana, meio peixe.", "Popular em lendas."] }
+      { termo: "secretario", dicas: ["adjetivo qualificativo", "salvou a aula com os slides", "o VITÃO é seu fã"] },
+      { termo: "uniao", dicas: ["queria a ___ do grupo", "marca de açucar", "se esforçou"] },
+      { termo: "SABESP", dicas: ["agua", "pinheiros", "linkedin"] }
     ]
   },
 
@@ -66,9 +66,9 @@ const PERSONS = [
     nome: "Membro 4",
     imagem: "/public/assets/images/user4.png",
     palavras: [
-      { termo: "AREIA", dicas: ["Presente na praia.", "Muito fina e clara.", "Usada para construir castelos."] },
-      { termo: "CONCHA", dicas: ["Objeto encontrado no mar.", "Pode gerar som curioso.", "Usado como lembrança de praia."] },
-      { termo: "MARISCO", dicas: ["Alimento do mar.", "Tem casca dura.", "Muito usado na culinária."] }
+      { termo: "responsavel", dicas: ["adjetivo qualificativo", "esteve presente", "foi o suficiente?"] },
+      { termo: "frontend", dicas: ["telinhas", "faltou a programaçao envolvida", "se esforçou"] },
+      { termo: "opentowork", dicas: ["estado atual", "eu contrataria", "linkedin"] }
     ]
   },
 
@@ -77,9 +77,9 @@ const PERSONS = [
     nome: "Membro 5",
     imagem: "/public/assets/images/user5.png",
     palavras: [
-      { termo: "NAVIO", dicas: ["Veículo marítimo.", "Pode transportar cargas.", "Também usado em cruzeiros."] },
-      { termo: "VELA", dicas: ["Usada para navegar.", "Pode ser branca.", "Captura o vento."] },
-      { termo: "RUMO", dicas: ["Direção que segue o navio.", "Algo que se traça antes de partir.", "Relacionado a navegação."] }
+      { termo: "thiago", dicas: ["thiago", "thiago", "thiago"] },
+      { termo: "thiago", dicas: ["thiago", "thiago", "thiago"] },
+      { termo: "thiago", dicas: ["thiago", "thiago", "thiago"] }
     ]
   },
 
@@ -88,9 +88,9 @@ const PERSONS = [
     nome: "Membro 6",
     imagem: "/public/assets/images/user6.png",
     palavras: [
-      { termo: "ILHA", dicas: ["Cercada por água.", "Pode ser tropical.", "Habitada ou deserta."] },
-      { termo: "FAROIS", dicas: ["Guia para embarcações.", "Emite luz forte.", "Fica próximo ao mar."] },
-      { termo: "TEMPESTADE", dicas: ["Vento forte.", "Relâmpagos.", "Freqüente em mares turbulentos."] }
+      { termo: "database", dicas: ["responsabilidade no projeto", "pelo menos fez o diagrama", "SUPABASE"] },
+      { termo: "postgres", dicas: ["alguem me ajuda com a linguagem", "SGBD", "sql é mais facil"] },
+      { termo: "esforcado", dicas: ["adjetivo qualificativo", "estava nas reunioes", "tentou acalmar o grupo"] }
     ]
   },
 
@@ -99,9 +99,9 @@ const PERSONS = [
     nome: "Membro 7",
     imagem: "/public/assets/images/user7.png",
     palavras: [
-      { termo: "TUBARAO", dicas: ["Animal marinho.", "Grande predador.", "Famoso em filmes."] },
-      { termo: "GAIVOTA", dicas: ["Ave da praia.", "Branca e cinza.", "Adora peixes."] },
-      { termo: "POLVO", dicas: ["Tem oito braços.", "Inteligente.", "Solta tinta."] }
+      { termo: "esporro", dicas: ["começou a trabalhar depois de", "VITAO que deu", "merecido"] },
+      { termo: "tudo", dicas: ["nao fez nada", "depois, fez o que", "nota 10"] },
+      { termo: "honda", dicas: ["vrum vrum", "assistente de dados", "linkedin"] }
     ]
   },
 
@@ -110,9 +110,9 @@ const PERSONS = [
     nome: "Membro 8",
     imagem: "/public/assets/images/user8.png",
     palavras: [
-      { termo: "NEBLINA", dicas: ["Diminui a visão.", "Comum no mar cedo.", "Branca e densa."] },
-      { termo: "MARUJO", dicas: ["Vive no mar.", "Tripulante do navio.", "Veterano de tempestades."] },
-      { termo: "ANCORA", dicas: ["Prende o navio.", "Pesada e metálica.", "Joga-se ao mar."] }
+      { termo: "esporro", dicas: ["começou a trabalhar depois de", "VITAO que deu", "merecido"] },
+      { termo: "fullstack", dicas: ["atribuicoes do projeto", "websocket", "VITAO"] },
+      { termo: "GCB", dicas: ["investimento", "backoffice", "linkedin"] }
     ]
   },
 
@@ -121,9 +121,9 @@ const PERSONS = [
     nome: "Membro 9",
     imagem: "/public/assets/images/user9.png",
     palavras: [
-      { termo: "PIRATA", dicas: ["Vive no mar.", "Procura tesouros.", "Tapa no olho."] },
-      { termo: "TESOURO", dicas: ["Cofre valioso.", "Enterrado em ilhas.", "Muito cobiçado."] },
-      { termo: "MAPA", dicas: ["Guia caminhos.", "Mostra ilhas.", "Essencial para piratas."] }
+      { termo: "rebelde", dicas: ["adjetivo uniforme", "VITAO adora", "novela da record"] },
+      { termo: "culpado", dicas: ["nao fez o trabalho dos outros", "atrasou tudo", "podia ter feito mais"] },
+      { termo: "sabesp", dicas: ["engenharia de dados", "agua", "linkedin"] }
     ]
   },
 
@@ -132,9 +132,9 @@ const PERSONS = [
     nome: "Membro 10",
     imagem: "/public/assets/images/user10.png",
     palavras: [
-      { termo: "PEROLA", dicas: ["Encontrada em ostras.", "Rara e brilhante.", "Usada em joias."] },
-      { termo: "OSTRA", dicas: ["Mollusco marinho.", "Casca dura.", "Pode conter pérolas."] },
-      { termo: "MARFIM", dicas: ["Material nobre.", "Relacionado ao mar por comércio.", "Muito caro historicamente."] }
+      { termo: "VITAO", dicas: ["adjetivo qualificativo", "professor", "para de fumar, cara"] },
+      { termo: "Cliente", dicas: ["responsavel por receber o projeto", "gerar valor para o:", "flexível"] },
+      { termo: "kickoff", dicas: ["reuniao", "sponsor participa", "custo, prazo e escopo"] }
     ]
   }
 ];
