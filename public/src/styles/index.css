@@ -36,9 +36,23 @@ body{
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
     url("../../assets/images/background.png") center / cover no-repeat;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
+
+body {
+  transition: transform 1s ease-in-out, filter 1s ease-in-out;
+}
+
+body.blackhole-out {
+  transform: scale(0) rotate(360deg);
+  filter: blur(20px);
+}
+
+body.blackhole-in {
+  transform: scale(1) rotate(0deg);
+  filter: blur(0);
+}
+
 
 /* ===== Overlays opcionais (luzes + bolhas) ===== */
 /* Se não quiser, pode comentar ambos os blocos abaixo */
