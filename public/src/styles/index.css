@@ -36,7 +36,8 @@ body{
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.20)),
     url("../../assets/images/background.png") center / cover no-repeat;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* ===== Overlays opcionais (luzes + bolhas) ===== */
@@ -103,19 +104,6 @@ header{
 }
 .btn-voltar:hover{ color: #cfefff; transform: translateX(-1px); }
 
-.btn-voltar img {
-  width: clamp(60px, 10vw, 150px);   /* tamanho responsivo */
-  height: auto;
-  display: block;                 /* remove espaçamento inline indesejado */
-  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
-  transition: transform .2s ease, filter .2s ease;
-}
-
-.btn-voltar:hover img {
-  transform: scale(1.1) scaleX(-1);
-  filter: drop-shadow(0 0 8px rgba(255,255,255,1))
-          drop-shadow(0 0 16px rgba(255,255,255,0.7));
-}
 .icon-img img{
   width: 100px;
   height: auto;
@@ -158,14 +146,6 @@ header{
   -webkit-backdrop-filter: blur(4px) saturate(1.05);
 
   z-index: 1;
-  animation: none;
-  will-change: transform, opacity;
-}
-
-
-
-.sessao-container:hover {
-  animation: blackHole 1.5s ease-in-out 1 forwards;
 }
 
 /* ===== Área de botões dentro do painel ===== */
@@ -345,23 +325,3 @@ header{
   .fonte_titulo{ font-size: clamp(1.2rem, 5vw, 3rem); }
   .icon-img img{ width: clamp(50px, 6vw, 80px); }
 }
-
-@keyframes blackHole {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  40% {
-    transform: scale(0) rotate(180deg);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(0) rotate(270deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 1;
-  }
-}
-
