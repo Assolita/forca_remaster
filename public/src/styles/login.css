@@ -345,7 +345,7 @@ header {
   .login-container{ 
     max-width: 95vw; 
     padding: 24px 20px; 
-    min-height: auto;
+    height: 420px; 
   }
   .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
   .icon-img img{ width: clamp(70px, 8vw, 100px); }
