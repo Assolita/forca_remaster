@@ -38,11 +38,10 @@ body{
     url("../../assets/images/coraline.png") center / cover no-repeat;
   position: relative;
   overflow: hidden;
+  transition: transform 1s ease-in-out, filter 1s ease-in-out;
+  
 }
 
-body {
-  transition: transform 1s ease-in-out, filter 1s ease-in-out;
-}
 
 body.blackhole-out {
   transform: scale(0) rotate(360deg);
