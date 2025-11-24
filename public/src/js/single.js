@@ -9,7 +9,7 @@
 const PERSONS = [
   {
     id: 1,
-    nome: "Membro 1",
+    nome: "Isadora",
     imagem: "/public/assets/images/user1.png",
     palavras: [
       {
@@ -41,7 +41,7 @@ const PERSONS = [
 
   {
     id: 2,
-    nome: "Membro 2",
+    nome: "Giovanna",
     imagem: "/public/assets/images/user2.png",
     palavras: [
       { termo: "Testando", dicas: ["Verbo no gerúndio", "Crucial para que dê certo", "não consigo testar se nao tiver pronto"] },
@@ -52,7 +52,7 @@ const PERSONS = [
 
   {
     id: 3,
-    nome: "Membro 3",
+    nome: "Thalles",
     imagem: "/public/assets/images/user3.png",
     palavras: [
       { termo: "secretario", dicas: ["adjetivo qualificativo", "salvou a aula com os slides", "o VITÃO é seu fã"] },
@@ -63,7 +63,7 @@ const PERSONS = [
 
   {
     id: 4,
-    nome: "Membro 4",
+    nome: "Iwamoto",
     imagem: "/public/assets/images/user4.png",
     palavras: [
       { termo: "responsavel", dicas: ["adjetivo qualificativo", "esteve presente", "foi o suficiente?"] },
@@ -74,7 +74,7 @@ const PERSONS = [
 
   {
     id: 5,
-    nome: "Membro 5",
+    nome: "Thiago",
     imagem: "/public/assets/images/user5.png",
     palavras: [
       { termo: "thiago", dicas: ["thiago", "thiago", "thiago"] },
@@ -85,7 +85,7 @@ const PERSONS = [
 
   {
     id: 6,
-    nome: "Membro 6",
+    nome: "Luiz Fernando",
     imagem: "/public/assets/images/user6.png",
     palavras: [
       { termo: "database", dicas: ["responsabilidade no projeto", "pelo menos fez o diagrama", "SUPABASE"] },
@@ -96,7 +96,7 @@ const PERSONS = [
 
   {
     id: 7,
-    nome: "Membro 7",
+    nome: "Gk",
     imagem: "/public/assets/images/user7.png",
     palavras: [
       { termo: "esporro", dicas: ["começou a trabalhar depois de", "VITAO que deu", "merecido"] },
@@ -107,7 +107,7 @@ const PERSONS = [
 
   {
     id: 8,
-    nome: "Membro 8",
+    nome: "Hideki",
     imagem: "/public/assets/images/user8.png",
     palavras: [
       { termo: "esporro", dicas: ["começou a trabalhar depois de", "VITAO que deu", "merecido"] },
@@ -118,7 +118,7 @@ const PERSONS = [
 
   {
     id: 9,
-    nome: "Membro 9",
+    nome: "Assola",
     imagem: "/public/assets/images/user9.png",
     palavras: [
       { termo: "rebelde", dicas: ["adjetivo uniforme", "VITAO adora", "novela da record"] },
@@ -129,7 +129,7 @@ const PERSONS = [
 
   {
     id: 10,
-    nome: "Membro 10",
+    nome: "VITAO",
     imagem: "/public/assets/images/user10.png",
     palavras: [
       { termo: "VITAO", dicas: ["adjetivo qualificativo", "professor", "para de fumar, cara"] },
