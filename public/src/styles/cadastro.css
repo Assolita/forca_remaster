@@ -91,6 +91,19 @@ header {
   transition: color 0.3s ease, transform .06s ease;
 }
 .btn-voltar:hover { color: #cfefff; transform: translateX(-1px); }
+.btn-voltar img {
+  width: clamp(60px, 10vw, 150px);   /* tamanho responsivo */
+  height: auto;
+  display: block;                 /* remove espaçamento inline indesejado */
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.btn-voltar:hover img {
+  transform: scale(1.1) scaleX(-1);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,1))
+          drop-shadow(0 0 16px rgba(255,255,255,0.7));
+}
 
 .icon-img img {
   width: 100px;
@@ -291,16 +304,6 @@ header {
 
 /* Responsivo */
 @media (max-width: 1366px){
-  .login-container{ 
-    max-width: 95vw; 
-    padding: 24px 20px; 
-    min-height: auto;
-  }
-    #login-container1{ 
-    max-width: 95vw; 
-    padding: 24px 20px; 
-    height: 420px; 
-  }
   .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
   .icon-img img{ width: clamp(70px, 8vw, 100px); }
   .login-button{ 
