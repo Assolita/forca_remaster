@@ -249,3 +249,11 @@ body::after{
   .icon-img img{ width: clamp(64px, 18vw, 88px); }
   .erro-card{ padding: 22px 18px; width: 94vw; }
 }
+
+
+/* RESPONSIVIDADE MOBILE-FIRST */
+html, body { max-width:100%; overflow-x:hidden; }
+@media(max-width:600px){ body{padding:0;} }
+@media(min-width:601px) and (max-width:1024px){ }
+@media(min-width:1025px) and (max-width:1440px){ }
+@media(min-width:1441px){ }

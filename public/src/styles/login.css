@@ -387,7 +387,7 @@ header {
 @keyframes flipLogin {
   0% {
     transform: rotateY(0);
-    background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+    
   }
   50% {
     transform: rotateY(90deg);
@@ -442,3 +442,12 @@ header {
 }
 
 
+
+
+
+/* RESPONSIVIDADE MOBILE-FIRST */
+html, body { max-width:100%; overflow-x:hidden; }
+@media(max-width:600px){ body{padding:0;} }
+@media(min-width:601px) and (max-width:1024px){ }
+@media(min-width:1025px) and (max-width:1440px){ }
+@media(min-width:1441px){ }

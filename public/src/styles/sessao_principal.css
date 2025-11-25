@@ -366,3 +366,25 @@ header{
   }
 }
 
+
+
+
+/* ===== RESPONSIVIDADE MOBILE-FIRST ===== */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* Smartphones */
+@media (max-width: 600px){
+  body{ padding:0; }
+}
+
+/* Tablets */
+@media (min-width:601px) and (max-width:1024px){
+}
+
+/* Laptops */
+@media (min-width:1025px) and (max-width:1440px){
+}
+
+/* Large Screens */
+@media (min-width:1441px){
+}

@@ -98,3 +98,11 @@ footer::before {
 #footer .links a:hover {
     text-shadow: 0 0 10px rgba(0, 215, 255, 1);
 }
+
+
+/* RESPONSIVIDADE MOBILE-FIRST */
+html, body { max-width:100%; overflow-x:hidden; }
+@media(max-width:600px){ body{padding:0;} }
+@media(min-width:601px) and (max-width:1024px){ }
+@media(min-width:1025px) and (max-width:1440px){ }
+@media(min-width:1441px){ }

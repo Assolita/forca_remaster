@@ -7,17 +7,21 @@ function gerarCodigoSala(tamanho = 6) {
   return codigo;
 }
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
-  const btnCriar   = document.getElementById('btnCriar');
-  const btnEntrar  = document.getElementById('btnEntrar');
+  const btnCriar  = document.getElementById('btnCriar');
+  const btnEntrar = document.getElementById('btnEntrar');
 
+  function animarENavegar(url) {
+    document.body.classList.add("blackhole-out");
+
+    setTimeout(() => {
+      window.location.href = url;
+    }, 1000); // tempo igual ao da animação no CSS
+  }
 
   if (btnCriar) {
     btnCriar.addEventListener('click', () => {
-      // NAO LER .VALUE AQUI. DEVE SÓ REDIRECIONAR
-      window.location.href = 'categorias.html';
+      animarENavegar('categorias.html');
     });
   } else {
     console.warn("Botão #btnCriar não encontrado na página.");
@@ -25,12 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnEntrar) {
     btnEntrar.addEventListener('click', () => {
-      window.location.href = 'sessao_guest.html';
+      animarENavegar('sessao_guest.html');
     });
   } else {
     console.warn("Botão #btnEntrar não encontrado na página.");
   }
 });
+
+
 
   // somos todos cabaços
 /*  if (btnEntrar) {

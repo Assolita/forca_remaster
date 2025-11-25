@@ -673,3 +673,36 @@ header {
 @media (max-width: 420px){
   .arrow-btn { display: none; }
 }
+
+
+/* =========================================
+   RESPONSIVIDADE — DESKTOP ONLY (SEM SCROLL)
+   ========================================= */
+
+html, body {
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Telas grandes */
+@media (min-width: 1600px) {
+    .icon-img img { width: 120px; }
+    .fonte_titulo, .titulo-sessao { font-size: clamp(3rem, 4vw, 5.5rem); }
+}
+
+/* 1366-1599px */
+@media (max-width: 1599px) and (min-width: 1200px) {}
+
+/* 1024-1199px */
+@media (max-width: 1199px) and (min-width: 1024px) {}
+
+/* 900-1023px */
+@media (max-width: 1023px) and (min-width: 900px) {}
+
+* { max-width: 100%; }
