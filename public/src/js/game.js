@@ -2549,11 +2549,11 @@ function atualizarBonecosUI() {
     
     // Só atualiza se os erros mudaram
     if (errosJogador1 !== ultimosErrosP1 && bonecoP1_El) {
-        bonecoP1_El.src = `/public/assets/images/play1${indiceP1}.png`;
+        bonecoP1_El.src = `/public/assets/images/sponge${indiceP1}.png`;
         ultimosErrosP1 = errosJogador1;
     }
     if (errosJogador2 !== ultimosErrosP2 && bonecoP2_El) {
-        bonecoP2_El.src = `/public/assets/images/play2${indiceP2}.png`;
+        bonecoP2_El.src = `/public/assets/images/star${indiceP2}.png`;
         ultimosErrosP2 = errosJogador2;
     }
     
