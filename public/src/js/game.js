@@ -648,7 +648,7 @@ function atualizarContadorPoderesDisplay() {
     const contadorEl = document.getElementById('poderes-contador-display');
     if (contadorEl) {
         const disponiveis = poderesDisponiveis.length;
-        const usados = poderesUsados.size;
+        const usados = poderesUsados.length;
         contadorEl.textContent = `${usados}/${disponiveis}`;
         contadorEl.style.color = usados === disponiveis ? 'rgba(255,255,255,.5)' : 'rgba(255,255,255,.7)';
     }
