@@ -112,35 +112,36 @@
          TECNOLOGIAS
     ============================ -->
     <section class="regras-bloco">
-      <h2><i class="fa-solid fa-diagram-project"></i> Tecnologias</h2>
+      <h2><i class="fa-solid fa-diagram-project"></i> Banco de Dados</h2>
       
       <ul>
         <li><strong>usuario</strong>: Tabela principal que armazena dados dos jogadores (id, nome, email, moedas, vitórias, inventário).</li>
+        <li>.</li>
         <li><strong>campaign_progress</strong>: Registra o progresso do jogador em campanhas.
-          <ul>
             <li>Relacionamento: <em>usuario_id → usuario.id</em></li>
-          </ul>
         </li>
+                <li>.</li>
+
         <li><strong>palavra</strong>: Palavras do jogo, separadas por "dificuldade" e "categoria".
-          <ul>
             <li>Relacionamento: <em>dica → palavra.id</em></li>
-          </ul>
         </li>
+                <li>.</li>
+
         <li><strong>dica</strong>: Dicas associadas às palavras.
-          <ul>
             <li>Relacionamento: <em>palavra_id → palavra.id</em></li>
-          </ul>
         </li>
+                <li>.</li>
+
         <li><strong>itemloja</strong>: Itens disponíveis na loja, com atributos do tipo do item, custo e disponibilidade.</li>
+                <li>.</li>
+
         <li><strong>inventario</strong>: Itens comprados pelo jogador, com atributo de quantidade.
-          <ul>
             <li>Relacionamentos: <em>usuario_id → usuario.id</em>, <em>itemloja_id → itemloja.id</em></li>
-          </ul>
         </li>
+                <li>.</li>
+
         <li><strong>partida</strong>: Partidas entre jogadores, com placar, vencedor e data.
-          <ul>
             <li>Relacionamentos: <em>jogador1_id, jogador2_id, vencedor_id → usuario.id</em></li>
-          </ul>
         </li>
       </ul>
 
@@ -148,7 +149,7 @@
 
 
       <section class="regras-bloco">
-      <h2><i class="fa-solid fa-code"></i>Banco de Dados</h2>
+      <h2><i class="fa-solid fa-code"></i>Tecnologias</h2>
       <ul class="regras-lista">
         <li>Node.js</li>
         <li>Express</li>
