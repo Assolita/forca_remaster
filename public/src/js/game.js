@@ -9,6 +9,8 @@ const log = DEBUG ? console.log.bind(console) : () => {};
 const logWarn = DEBUG ? console.warn.bind(console) : () => {};
 const logError = console.error.bind(console); // Erros sempre logados
 
+const { Howl } = require('howler');
+
 
 
 
@@ -131,6 +133,8 @@ function aplicarBackgroundPorCategoria(categoria) {
 }
 
 
+const palpiteSound = new Howl({ src: ["/public/assets/sounds/tiger.mp4"] });
+
 // Mapeamento de nomes de poderes para nomes de imagens e descrições
 const MAPEAMENTO_PODERES = {
     'liberar_letra': {
@@ -167,6 +171,7 @@ const MAPEAMENTO_PODERES = {
         imagem: '/public/assets/images/palpite.png',
         video: "/public/assets/videos/corvo.mp4",
         nome: 'Palpite',
+        sound: palpiteSound,
         descricao: 'Faz um palpite sobre a palavra'
     }
 };
@@ -930,7 +935,7 @@ function mostrarCartaDoPoder(poderId) {
     requestAnimationFrame(() => {
       carta.classList.add("mostrar");
     });
-
+    sound.play();
     // tenta tocar (pode ser bloqueado em alguns navegadores se não for interação do usuário)
     video.play().catch(err => {
       console.warn("play() bloqueado:", err);

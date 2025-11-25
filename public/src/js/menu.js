@@ -1,5 +1,8 @@
 // O console.log deve ficar aqui para indicar o carregamento do script externo
 console.log("menu.js carregado!");
+const { Howl } = require('howler');
+
+const clickSound = new Howl({ src: ["/public/assets/sounds/click.mp4"] });
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -75,16 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (icone) {
                  if (icone.classList.contains('fa-medal')) {
                     console.log("Clicou em RANKING.");
+                    clickSound.play()
                     window.location.href = 'ranking.html';
 
                 } else if (icone.classList.contains('fa-shopping-cart')) {
                     console.log("Clicou em LOJA.");
+                    clickSound.play()
                     window.location.href = 'loja.html';
                 
                 // NOTA: O terceiro botão (Configurações) NÃO existe no seu HTML atual, 
                 // então este listener não vai funcionar para ele.
                 } else if (icone.classList.contains('fa-question')) {
                     console.log("Clicou em ABOUT US.");
+                    clickSound.play()
                     window.location.href = 'aboutus.html'; 
                 }
             }
