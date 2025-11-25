@@ -133,7 +133,12 @@ function aplicarBackgroundPorCategoria(categoria) {
 }
 
 
-const palpiteSound = new Howl({ src: ["/public/assets/sounds/tiger.mp4"] });
+const palpiteSound = new Howl({ src: ["/public/assets/sounds/crow.mp4"] });
+const vidaextraSound = new Howl({ src: ["/public/assets/sounds/ghost.mp4"] });
+const tirarvidaSound = new Howl({ src: ["/public/assets/sounds/tiger.mp4"] });
+const ocultardicaSound = new Howl({ src: ["/public/assets/sounds/reindeer.mp4"] });
+const ocultarletraSound = new Howl({ src: ["/public/assets/sounds/cat.mp4"] });
+const liberarletraSound = new Howl({ src: ["/public/assets/sounds/rabbit.mp4"] });
 
 // Mapeamento de nomes de poderes para nomes de imagens e descrições
 const MAPEAMENTO_PODERES = {
@@ -141,30 +146,35 @@ const MAPEAMENTO_PODERES = {
         imagem: '/public/assets/images/liberar_letra.png',
         video: "/public/assets/videos/cueio.mp4",
         nome: 'Liberar Letra',
+        sound: liberarletraSound,
         descricao: 'Revela uma letra da palavra'
     },
     'ocultar_dica': {
         imagem: '/public/assets/images/ocultar_dica.png',
         video: "/public/assets/videos/alce.mp4",
         nome: 'Ocultar Dica',
+        sound: ocultardicaSound,
         descricao: 'Oculta a dica do adversário'
     },
     'ocultar_letra': {
         imagem: '/public/assets/images/ocultar_letra.png',
         video: "/public/assets/videos/gatodenteanimated.mp4",
         nome: 'Ocultar Letra',
+        sound: ocultarletraSound,
         descricao: 'Oculta uma letra da palavra do adversário'
     },
     'tirar_vida': {
         imagem: '/public/assets/images/Tirar_vida.png',
         video: "/public/assets/videos/gataogotoso.mp4",
         nome: 'Tirar Vida',
+        sound: tirarvidaSound,
         descricao: 'Tira uma vida do adversário'
     },
     'vida_extra': {
         imagem: '/public/assets/images/vida_extra.png',
         video: "/public/assets/videos/forestanimated.mp4",
         nome: 'Vida Extra',
+        sound: vidaextraSound,
         descricao: 'Ganha uma vida extra'
     },
     'palpite': {

@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           "Você já concluiu o desafio deste integrante na campanha!";
       } else {
         modalDesc.textContent =
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vehicula justo sed ligula molestie.";
+          "Progresso da campanha deste personagem em andamento. Continue!";
       }
 
       modal.classList.add('active');
