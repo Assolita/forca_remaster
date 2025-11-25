@@ -1,8 +1,5 @@
 /* =========================================
-   SESSÃO PRINCIPAL – Tema Aquário (HTML intacto)
-   - Fundo com imagem (mesmo do menu)
-   - Painel de vidro com min-height fixo (F11 não estica)
-   - Botões no estilo aqua
+   SESSÃO PRINCIPAL – Tema Aquário
    ========================================= */
 
 :root{
@@ -13,7 +10,6 @@
   --aqua:      #8e24aa;   
   --aqua-dark: #6f096b;   
 
-
   --glass-brd: rgba(255,255,255,.35);
   --shadow:    rgba(0,0,0,.35);
 }
@@ -21,7 +17,7 @@
 *{ box-sizing: border-box; }
 html, body{ height: 100%; }
 
-/* ===== Fundo (mesma imagem do menu) ===== */
+/* ===== Fundo ===== */
 body{
   margin: 0;
   padding: 0;
@@ -38,11 +34,12 @@ body{
     url("../../assets/images/coraline.png") center / cover no-repeat;
   position: relative;
   overflow: hidden;
+
+  /* IMPORTANTE: transição aplicada no body */
   transition: transform 1s ease-in-out, filter 1s ease-in-out;
-  
 }
 
-
+/* Quando a classe for adicionada no body via JS, ele "some" em buraco negro */
 body.blackhole-out {
   transform: scale(0) rotate(360deg);
   filter: blur(20px);
@@ -53,9 +50,7 @@ body.blackhole-in {
   filter: blur(0);
 }
 
-
-/* ===== Overlays opcionais (luzes + bolhas) ===== */
-/* Se não quiser, pode comentar ambos os blocos abaixo */
+/* ===== Overlays ===== */
 body::before{
   content:"";
   position: absolute;
@@ -85,6 +80,7 @@ body::after{
   opacity: .5;
   pointer-events: none;
 }
+
 @keyframes drift {
   0%   { transform: translateY(0) translateX(0) scale(1); }
   100% { transform: translateY(8px) translateX(10px) scale(1.02); }
@@ -94,7 +90,7 @@ body::after{
   100% { background-position: 0 -120vh, 0 -110vh, 0 -115vh, 0 -130vh, 0 -125vh; }
 }
 
-/* ===== Header (mantém estrutura) ===== */
+/* ===== Header ===== */
 header{
   width: 100%;
   padding: 12px 0;
@@ -106,7 +102,6 @@ header{
   z-index: 1;
 }
 
-/* Botão Voltar (mantido e visível sobre o fundo) */
 .btn-voltar{
   position: absolute;
   left: clamp(12px, 6vw, 100px);
@@ -119,9 +114,9 @@ header{
 .btn-voltar:hover{ color: #cfefff; transform: translateX(-1px); }
 
 .btn-voltar img {
-  width: clamp(60px, 10vw, 150px);   /* tamanho responsivo */
+  width: clamp(60px, 10vw, 150px);
   height: auto;
-  display: block;                 /* remove espaçamento inline indesejado */
+  display: block;
   filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
   transition: transform .2s ease, filter .2s ease;
 }
@@ -131,6 +126,7 @@ header{
   filter: drop-shadow(0 0 8px rgba(255,255,255,1))
           drop-shadow(0 0 16px rgba(255,255,255,0.7));
 }
+
 .icon-img img{
   width: 100px;
   height: auto;
@@ -149,7 +145,7 @@ header{
     0 10px 30px rgba(0,0,0,.55);
 }
 
-/* ===== Painel (vidro) – Fixo em F11 ===== */
+/* ===== Painel ===== */
 .sessao-container{
   padding: 30px 26px;
   border-radius: 18px;
@@ -161,7 +157,7 @@ header{
   margin-top: 20px;
   justify-content: center;
 
-  max-height: 460px;
+  min-height: 460px;
 
   background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
   border: 2px solid var(--glass-brd);
@@ -173,26 +169,23 @@ header{
   -webkit-backdrop-filter: blur(4px) saturate(1.05);
 
   z-index: 1;
-  animation: none;
   will-change: transform, opacity;
 }
 
-
-
+/* 🔴 IMPORTANTE: REMOVEMOS qualquer animação via :hover */
 .sessao-container:hover {
-  animation: blackHole 1.5s ease-in-out 1 forwards;
+  animation: none;
 }
 
-/* ===== Área de botões dentro do painel ===== */
+/* ===== Botões ===== */
 .sessao-botoes{
   display: flex;
   justify-content: center;
-  gap: 40px;       /* antes já era 40px, mantido */
+  gap: 40px;
   width: 100%;
-  flex-wrap: wrap; /* permite quebrar no mobile */
+  flex-wrap: wrap;
 }
 
-/* ===== Botões (estilo aqua do menu - melhorado) ===== */
 .sessao-botao{
   background:
     radial-gradient(120% 180% at 30% 20%, rgba(255,255,255,.45), rgba(255,255,255,.1) 45%, rgba(255,255,255,0) 60%),
@@ -209,10 +202,9 @@ header{
   position: relative;
   overflow: hidden;
 
-  /* Em vez de padding gigantesco, controlamos por largura */
-  width: 480px;        /* mesmo look do botão JOGAR do menu */
-  padding: 24px 32px;  /* altura confortável */
-  white-space: nowrap; /* mantém o texto em uma linha */
+  width: 480px;
+  padding: 24px 32px;
+  white-space: nowrap;
 
   box-shadow:
     0 10px 22px rgba(0,229,255,.28),
@@ -265,118 +257,52 @@ header{
     0 3px 0 rgba(0,0,0,.3);
 }
 
-/* ===== Acessibilidade (foco) ===== */
 .sessao-botao:focus{
   outline: 3px solid rgba(255,255,255,.85);
   outline-offset: 4px;
 }
 
-/* ===== Responsividade ===== */
-@media (max-width: 768px){
-  .btn-voltar{ left: 12px; font-size: 2rem; }
-  .sessao-botao{ 
-    width: 100%; 
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    padding: 20px 24px;
-  }
-  .sessao-container{ 
-    max-width: 94vw; 
-    min-height: 480px; 
-    padding: 28px 20px; 
-  }
-  .sessao-botoes{ 
-    gap: 20px; 
+/* =========================================
+   RESPONSIVIDADE — DESKTOP ONLY (SEM SCROLL)
+   ========================================= */
+
+html, body {
+    overflow: hidden;
+}
+
+body {
+    display: flex;
     flex-direction: column;
-  }
-  .titulo-sessao {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-  }
-  .icon-img img {
-    width: clamp(60px, 15vw, 80px);
-  }
+    justify-content: flex-start;
+    align-items: center;
 }
 
-@media (max-width: 520px){
-  .sessao-botao{ 
-    width: 100%; 
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-    padding: 18px 20px;
-  }
-  .sessao-container{ 
-    max-width: 96vw; 
-    min-height: 420px; 
-    padding: 24px 16px; 
-  }
-  .sessao-botoes{ 
-    gap: 16px; 
-  }
-  .titulo-sessao {
-    font-size: clamp(1.3rem, 4vw, 2.5rem);
-    letter-spacing: 0.08em;
-  }
-  header {
-    padding: 8px 0;
-    gap: 12px;
-  }
+@media (min-width: 1600px) {
+    .icon-img img { width: 120px; }
+    .titulo-sessao { font-size: clamp(3rem, 4vw, 5.5rem); }
+    .sessao-container { max-width: 720px; padding: 40px 34px; min-height: 520px; }
+    .sessao-botao { width: 520px; font-size: 32px; padding: 28px 34px; }
 }
 
-@media (max-width: 1366px){
-  .sessao-container{ 
-    width: 500px; 
-    height: 360px; 
-    padding: 24px 20px; 
-  }
-  .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
-  .icon-img img{ width: clamp(70px, 8vw, 100px); }
-  .sessao-botao{ 
-    width: clamp(280px, 55%, 360px);
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    padding: clamp(14px, 2vw, 18px);
-  }
+@media (max-width: 1599px) and (min-width: 1200px) {
+    .sessao-container { max-width: 600px; }
+    .sessao-botao { width: 440px; font-size: 28px; }
 }
 
-@media (max-width: 720px){
-  .sessao-container{ 
-    max-width: 94vw; 
-    padding: 24px 18px; 
-  }
-  .fonte_titulo{ font-size: clamp(1.5rem, 6vw, 4rem); }
-  .icon-img img{ width: clamp(60px, 7vw, 90px); }
-  .sessao-botao{ width: 100%; }
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .icon-img img { width: 80px; }
+    .titulo-sessao { font-size: clamp(1.8rem, 4vw, 3.8rem); }
+    .sessao-container { max-width: 520px; padding: 24px 20px; min-height: 420px; }
+    .sessao-botao { width: 380px; font-size: 24px; padding: 20px 26px; }
 }
 
-@media (max-width: 420px){
-  .sessao-botoes{ 
-    gap: 14px; 
-  }
-  .sessao-botao {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-    padding: 16px 18px;
-  }
-  .sessao-container {
-    padding: 20px 15px;
-    min-height: auto;
-  }
-  .fonte_titulo{ font-size: clamp(1.2rem, 5vw, 3rem); }
-  .icon-img img{ width: clamp(50px, 6vw, 80px); }
+@media (max-width: 1023px) and (min-width: 900px) {
+    .icon-img img { width: 70px; }
+    .titulo-sessao { font-size: clamp(1.6rem, 4vw, 3rem); }
+    .sessao-container { max-width: 480px; padding: 20px 16px; min-height: 390px; }
+    .sessao-botao { width: 340px; font-size: 22px; padding: 18px 22px; }
 }
 
-@keyframes blackHole {
-  0% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-  40% {
-    transform: scale(0) rotate(180deg);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(0) rotate(270deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 1;
-  }
+* {
+    max-width: 100%;
 }
-

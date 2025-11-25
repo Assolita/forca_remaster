@@ -249,94 +249,102 @@ header{
   outline: 3px solid rgba(255,255,255,.85);
   outline-offset: 4px;
 }
+/* =========================================
+   RESPONSIVIDADE — SOMENTE DESKTOP
+   (nenhuma página deve rolar)
+   ========================================= */
 
-/* ===== Responsividade ===== */
-@media (max-width: 768px){
-  .btn-voltar{ left: 12px; font-size: 2rem; }
-  .sessao-botao{ 
-    width: 100%; 
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    padding: 20px 24px;
-  }
-  .sessao-container{ 
-    max-width: 94vw; 
-    min-height: 480px; 
-    padding: 28px 20px; 
-  }
-  .sessao-botoes{ 
-    gap: 20px; 
+/* Impede qualquer scroll */
+html, body {
+    overflow: hidden;
+}
+
+/* Garante que tudo sempre fique centralizado na tela */
+body {
+    display: flex;
     flex-direction: column;
-  }
-  .titulo-sessao {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-  }
-  .icon-img img {
-    width: clamp(60px, 15vw, 80px);
-  }
+    justify-content: flex-start;
+    align-items: center;
 }
 
-@media (max-width: 520px){
-  .sessao-botao{ 
-    width: 100%; 
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
-    padding: 18px 20px;
-  }
-  .sessao-container{ 
-    max-width: 96vw; 
-    min-height: 420px; 
-    padding: 24px 16px; 
-  }
-  .sessao-botoes{ 
-    gap: 16px; 
-  }
-  .titulo-sessao {
-    font-size: clamp(1.3rem, 4vw, 2.5rem);
-    letter-spacing: 0.08em;
-  }
-  header {
-    padding: 8px 0;
-    gap: 12px;
-  }
+/* Responsividade geral — telas grandes (Full HD, 2K, 4K) */
+@media (min-width: 1600px) {
+    .titulo-sessao {
+        font-size: clamp(3rem, 4vw, 5.5rem);
+    }
+
+    .icon-img img {
+        width: 120px;
+    }
+
+    .sessao-container {
+        max-width: 720px;
+        padding: 40px 34px;
+        min-height: 520px;
+    }
+
+    .sessao-botao {
+        width: 520px;
+        font-size: 32px;
+        padding: 28px 34px;
+    }
 }
 
-@media (max-width: 1366px){
-  .sessao-container{ 
-    width: 500px; 
-    height: 360px; 
-    padding: 24px 20px; 
-  }
-  
-  .fonte_titulo{ font-size: clamp(1.8rem, 7vw, 5.5rem); }
-  .icon-img img{ width: clamp(70px, 8vw, 100px); }
-  .sessao-botao{ 
-    width: clamp(280px, 55%, 360px);
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    padding: clamp(14px, 2vw, 18px);
-  }
+/* Telas médias (1366px – 1600px) */
+@media (max-width: 1599px) and (min-width: 1200px) {
+    .sessao-container {
+        max-width: 600px;
+    }
+    .sessao-botao {
+        width: 440px;
+        font-size: 28px;
+    }
 }
 
-@media (max-width: 720px){
-  .sessao-container{ 
-    max-width: 94vw; 
-    padding: 24px 18px; 
-  }
-  .fonte_titulo{ font-size: clamp(1.5rem, 6vw, 4rem); }
-  .icon-img img{ width: clamp(60px, 7vw, 90px); }
-  .sessao-botao{ width: 100%; }
+/* Telas menores de DESKTOP (1024px – 1199px) */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .icon-img img {
+        width: 80px;
+    }
+    .titulo-sessao {
+        font-size: clamp(1.8rem, 4vw, 3.8rem);
+    }
+
+    .sessao-container {
+        max-width: 520px;
+        padding: 24px 20px;
+        min-height: 420px;
+    }
+
+    .sessao-botao {
+        width: 380px;
+        font-size: 24px;
+        padding: 20px 26px;
+    }
 }
 
-@media (max-width: 420px){
-  .sessao-botoes{ 
-    gap: 14px; 
-  }
-  .sessao-botao {
-    font-size: clamp(1rem, 3vw, 1.4rem);
-    padding: 16px 18px;
-  }
-  .sessao-container {
-    padding: 20px 15px;
-    min-height: auto;
-  }
-  .fonte_titulo{ font-size: clamp(1.2rem, 5vw, 3rem); }
-  .icon-img img{ width: clamp(50px, 6vw, 80px); }
+/* Quase-mobile, mas ainda desktop pequeno (900px – 1023px)
+   NÃO vira coluna, só reduz */
+@media (max-width: 1023px) and (min-width: 900px) {
+    .icon-img img {
+        width: 70px;
+    }
+    .titulo-sessao {
+        font-size: clamp(1.6rem, 4vw, 3rem);
+    }
+    .sessao-container {
+        max-width: 480px;
+        padding: 20px 16px;
+        min-height: 390px;
+    }
+    .sessao-botao {
+        width: 340px;
+        font-size: 22px;
+        padding: 18px 22px;
+    }
+}
+
+/* Anti-overflow geral — impede qualquer rolagem mesmo se algo escapar */
+* {
+    max-width: 100%;
 }
