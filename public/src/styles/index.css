@@ -294,6 +294,7 @@ body {
 @media (max-width: 1599px) and (min-width: 1200px) {
     .sessao-container {
         max-width: 600px;
+         max-height: 400px;
     }
     .sessao-botao {
         width: 440px;
