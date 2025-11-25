@@ -148,7 +148,7 @@ header{
   margin-top: 20px;
   justify-content: center;
 
-  min-height: 460px;
+  max-height: 400px;
 
   background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
   border: 2px solid var(--glass-brd);
