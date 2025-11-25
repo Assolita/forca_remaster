@@ -1636,161 +1636,249 @@ module.exports = function(io) {
             console.log(`💚 Vida extra adicionada! Jogador ${numeroJogador} agora tem ${vidasAtualizadas[numeroJogador - 1]} vidas`);
             break;
           }
-            
           case 'tirar_vida': {
-            // Adiciona um erro na forca do adversário (não remove vida diretamente)
             const adversarioNum = numeroJogador === 1 ? 2 : 1;
-            const gameInstanceAdversario = game.gameInstances[adversarioNum - 1];
-            
-            if (gameInstanceAdversario && gameInstanceAdversario.status === 'jogando') {
-              // Adiciona um erro (como se o adversário tivesse errado)
-              gameInstanceAdversario.erros++;
-              
-              // Verifica se o adversário perdeu (6 erros = perde uma vida)
-              if (gameInstanceAdversario.erros >= 6) {
-                game.vidas[adversarioNum - 1]--;
-                vidasAtualizadas[adversarioNum - 1] = game.vidas[adversarioNum - 1];
-                gameInstanceAdversario.status = 'derrota';
-                
-                // Verifica se o jogo acabou
-                if (vidasAtualizadas[adversarioNum - 1] <= 0) {
-                  const vencedor = numeroJogador;
-                  
-                  // Atualiza vidas do game antes de finalizar
-                  game.vidas = vidasAtualizadas;
-                  
-                  // Usa função centralizada para finalizar o jogo
-                  const eventoFim = await finalizarJogo(game, vencedor, 'normal');
-                  if (eventoFim) {
-                    io.to(roomId).emit('eventoJogo', eventoFim);
-                    setTimeout(() => {
-                      activeGames.delete(roomId);
-                    }, 5000);
-                  }
-                  
-                  jogadorAtual.poderes = jogadorAtual.poderes.filter(p => p !== poderId);
-                  return;
-                } else {
-                  // Adversário perdeu uma vida mas ainda tem vidas - reseta para nova rodada
-                  console.log(`🔄 Adversário perdeu uma vida! Resetando ambas as palavras para nova rodada...`);
-                  console.log(`📊 Vidas após perda: J1=${vidasAtualizadas[0]}, J2=${vidasAtualizadas[1]} - Continuando jogo`);
-                  
-                  try {
-                    // Busca primeira nova palavra excluindo todas as palavras já usadas no jogo
-                    const novaPalavraObj1 = await getRandomWord({ 
-                      categoria: game.categoria, 
-                      excluirPalavras: game.palavrasUsadas || [] 
-                    });
-                    const novaPalavra1 = (novaPalavraObj1?.palavra || 'FORCA').toUpperCase();
-                    const dificuldadeNova = novaPalavraObj1?.dificuldade || null;
-                    
-                    // Busca segunda palavra com a MESMA dificuldade
-                    let novaPalavraObj2;
-                    let novaPalavra2;
-                    let tentativas = 0;
-                    const palavrasParaExcluir = [...(game.palavrasUsadas || []), novaPalavra1];
-                    
-                    if (dificuldadeNova) {
-                      do {
-                        try {
-                          novaPalavraObj2 = await getRandomWord({ 
-                            categoria: game.categoria, 
-                            excluirPalavras: palavrasParaExcluir,
-                            dificuldade: dificuldadeNova
-                          });
-                          
-                          if (novaPalavraObj2) {
-                            novaPalavra2 = (novaPalavraObj2?.palavra || 'FORCA').toUpperCase();
-                            if (novaPalavra1 !== novaPalavra2) {
-                              break;
-                            }
-                            if (novaPalavra1 === novaPalavra2 && tentativas < 5) {
-                              palavrasParaExcluir.push(novaPalavra2);
-                            }
-                          }
-                        } catch (error) {
-                          console.warn(`⚠️ Não foi possível encontrar palavra com dificuldade ${dificuldadeNova}. Tentando sem filtro...`);
-                          novaPalavraObj2 = null;
-                          break;
-                        }
-                        tentativas++;
-                      } while (novaPalavra1 === novaPalavra2 && tentativas < 5);
-                    }
-                    
-                    // Se não encontrou palavra com a mesma dificuldade, tenta sem filtro
-                    if (!novaPalavraObj2) {
-                      if (dificuldadeNova) {
-                        console.warn(`⚠️ Não foi possível encontrar palavra com dificuldade ${dificuldadeNova}. Buscando sem filtro de dificuldade...`);
-                      }
-                      novaPalavraObj2 = await getRandomWord({ 
-                        categoria: game.categoria, 
-                        excluirPalavras: palavrasParaExcluir 
-                      });
-                      novaPalavra2 = (novaPalavraObj2?.palavra || 'FORCA').toUpperCase();
-                    }
-                    
-                    // Adiciona as novas palavras à lista de palavras usadas
-                    if (!game.palavrasUsadas) {
-                      game.palavrasUsadas = [];
-                    }
-                    game.palavrasUsadas.push(novaPalavra1);
-                    if (novaPalavra1 !== novaPalavra2) {
-                      game.palavrasUsadas.push(novaPalavra2);
-                    }
-                    
-                    // Reseta ambas as instâncias
-                    game.words[0] = novaPalavra1;
-                    game.words[1] = novaPalavra2;
-                    game.gameInstances[0] = new Game(novaPalavra1, game.categoria);
-                    game.gameInstances[1] = new Game(novaPalavra2, game.categoria);
-                    
-                    // Atualiza as dicas das novas palavras
-                    const dicasJogador1 = novaPalavraObj1?.dicas?.filter(d => d.ordem >= 1 && d.ordem <= 3) || [];
-                    const dicasJogador2 = novaPalavraObj2?.dicas?.filter(d => d.ordem >= 1 && d.ordem <= 3) || [];
-                    game.dicas = [dicasJogador1, dicasJogador2];
-                    
-                    // Alterna o turno: quem começou a rodada anterior, o outro começa a próxima
-                    const turnoAnterior = game.turnoInicialRodada || 1;
-                    game.turno = turnoAnterior === 1 ? 2 : 1;
-                    game.turnoInicialRodada = game.turno;
-                    
-                    console.log(`✅ Nova rodada iniciada! Turno: Jogador ${game.turno}`);
-                    
-                    // Atualiza o resultado do poder para incluir informações da nova rodada
-                    resultadoPoder.novaRodada = true;
-                    resultadoPoder.novaPalavraJogador1 = novaPalavra1;
-                    resultadoPoder.novaPalavraJogador2 = novaPalavra2;
-                    resultadoPoder.dicasJogador1 = dicasJogador1;
-                    resultadoPoder.dicasJogador2 = dicasJogador2;
-                  } catch (error) {
-                    console.error('❌ Erro ao buscar novas palavras para nova rodada:', error);
-                    console.error('Stack trace:', error.stack);
-                  }
-                }
-              }
-              
-              const estadoAdversario = gameInstanceAdversario.getEstado();
+            const adversario = game.gameInstances[adversarioNum - 1];
+
+            if (!adversario || adversario.status !== 'jogando') {
               resultadoPoder = {
-                tipo: 'tirarVida',
-                jogador: numeroJogador,
-                alvo: adversarioNum,
-                errosAdversario: estadoAdversario.erros,
-                novasVidas: vidasAtualizadas,
-                sucesso: true,
-                adversarioPerdeuVida: gameInstanceAdversario.erros >= 6
-              };
-              console.log(`⚔️ Erro adicionado à forca do adversário! Jogador ${adversarioNum} agora tem ${estadoAdversario.erros} erros${gameInstanceAdversario.erros >= 6 ? ' (perdeu uma vida!)' : ''}`);
-            } else {
-              resultadoPoder = {
-                tipo: 'tirarVida',
-                jogador: numeroJogador,
-                alvo: adversarioNum,
+                tipo: 'erro',
                 sucesso: false,
-                mensagem: 'Adversário não está em jogo'
+                mensagem: 'Não foi possível aplicar o poder.'
+              };
+              break;
+            }
+
+            // ======== 🔵 FORÇA UM ERRO REAL (Mesma lógica do chute) ========
+
+            // Marca uma letra inexistente para simular erro
+            const letraFake = "#"; // letra impossível
+            adversario.letrasChutadas.add(letraFake);
+
+            adversario.erros++;
+
+            let perdeuVida = false;
+            let jogoAcabou = false;
+
+            if (adversario.erros >= 6) {
+              perdeuVida = true;
+              game.vidas[adversarioNum - 1]--;
+
+              // Marca derrota da rodada no adversário
+              adversario.status = 'derrota';
+
+              //  zerar erros para a próxima rodada
+              adversario.erros = 0;
+
+              //  resetar letras
+              adversario.letrasChutadas.clear();
+
+              // Verifica fim do jogo
+              if (game.vidas[adversarioNum - 1] <= 0) {
+                jogoAcabou = true;
+
+                game.vidas = [...game.vidas];
+
+                const eventoFim = await finalizarJogo(game, numeroJogador, 'normal');
+                if (eventoFim) {
+                  io.to(roomId).emit('eventoJogo', eventoFim);
+                  setTimeout(() => activeGames.delete(roomId), 5000);
+                }
+
+                jogadorAtual.poderes = jogadorAtual.poderes.filter(p => p !== poderId);
+                return;
+              }
+
+              // ======== 🔵 NOVA RODADA (Mesma lógica do chute normal) ========
+              const nova1 = await getRandomWord({ categoria: game.categoria });
+              const nova2 = await getRandomWord({
+                categoria: game.categoria,
+                dificuldade: nova1.dificuldade
+              });
+
+              game.gameInstances[0].reiniciar(nova1.palavra.toUpperCase());
+              game.gameInstances[1].reiniciar(nova2.palavra.toUpperCase());
+
+              resultadoPoder = {
+                tipo: 'tirarVida',
+                sucesso: true,
+                perdeuVida: true,
+                novaRodada: true,
+                novaPalavraJogador1: nova1.palavra.toUpperCase(),
+                novaPalavraJogador2: nova2.palavra.toUpperCase(),
+                dicasJogador1: [],
+                dicasJogador2: []
+              };
+
+            } else {
+              // Não perdeu vida — apenas erro simples
+              resultadoPoder = {
+                tipo: 'tirarVida',
+                sucesso: true,
+                perdeuVida: false
               };
             }
+
+            vidasAtualizadas = [...game.vidas];
+
             break;
           }
+
+          //case antigo e bugado
+          // case 'tirar_vida': {
+          //   // Adiciona um erro na forca do adversário (não remove vida diretamente)
+          //   const adversarioNum = numeroJogador === 1 ? 2 : 1;
+          //   const gameInstanceAdversario = game.gameInstances[adversarioNum - 1];
+            
+          //   if (gameInstanceAdversario && gameInstanceAdversario.status === 'jogando') {
+          //     // Adiciona um erro (como se o adversário tivesse errado)
+          //     gameInstanceAdversario.erros++;
+              
+          //     // Verifica se o adversário perdeu (6 erros = perde uma vida)
+          //     if (gameInstanceAdversario.erros >= 6) {
+          //       game.vidas[adversarioNum - 1]--;
+          //       vidasAtualizadas[adversarioNum - 1] = game.vidas[adversarioNum - 1];
+          //       gameInstanceAdversario.status = 'derrota';
+                
+          //       // Verifica se o jogo acabou
+          //       if (vidasAtualizadas[adversarioNum - 1] <= 0) {
+          //         const vencedor = numeroJogador;
+                  
+          //         // Atualiza vidas do game antes de finalizar
+          //         game.vidas = vidasAtualizadas;
+                  
+          //         // Usa função centralizada para finalizar o jogo
+          //         const eventoFim = await finalizarJogo(game, vencedor, 'normal');
+          //         if (eventoFim) {
+          //           io.to(roomId).emit('eventoJogo', eventoFim);
+          //           setTimeout(() => {
+          //             activeGames.delete(roomId);
+          //           }, 5000);
+          //         }
+                  
+          //         jogadorAtual.poderes = jogadorAtual.poderes.filter(p => p !== poderId);
+          //         return;
+          //       } else {
+          //         // Adversário perdeu uma vida mas ainda tem vidas - reseta para nova rodada
+          //         console.log(`🔄 Adversário perdeu uma vida! Resetando ambas as palavras para nova rodada...`);
+          //         console.log(`📊 Vidas após perda: J1=${vidasAtualizadas[0]}, J2=${vidasAtualizadas[1]} - Continuando jogo`);
+                  
+          //         try {
+          //           // Busca primeira nova palavra excluindo todas as palavras já usadas no jogo
+          //           const novaPalavraObj1 = await getRandomWord({ 
+          //             categoria: game.categoria, 
+          //             excluirPalavras: game.palavrasUsadas || [] 
+          //           });
+          //           const novaPalavra1 = (novaPalavraObj1?.palavra || 'FORCA').toUpperCase();
+          //           const dificuldadeNova = novaPalavraObj1?.dificuldade || null;
+                    
+          //           // Busca segunda palavra com a MESMA dificuldade
+          //           let novaPalavraObj2;
+          //           let novaPalavra2;
+          //           let tentativas = 0;
+          //           const palavrasParaExcluir = [...(game.palavrasUsadas || []), novaPalavra1];
+                    
+          //           if (dificuldadeNova) {
+          //             do {
+          //               try {
+          //                 novaPalavraObj2 = await getRandomWord({ 
+          //                   categoria: game.categoria, 
+          //                   excluirPalavras: palavrasParaExcluir,
+          //                   dificuldade: dificuldadeNova
+          //                 });
+                          
+          //                 if (novaPalavraObj2) {
+          //                   novaPalavra2 = (novaPalavraObj2?.palavra || 'FORCA').toUpperCase();
+          //                   if (novaPalavra1 !== novaPalavra2) {
+          //                     break;
+          //                   }
+          //                   if (novaPalavra1 === novaPalavra2 && tentativas < 5) {
+          //                     palavrasParaExcluir.push(novaPalavra2);
+          //                   }
+          //                 }
+          //               } catch (error) {
+          //                 console.warn(`⚠️ Não foi possível encontrar palavra com dificuldade ${dificuldadeNova}. Tentando sem filtro...`);
+          //                 novaPalavraObj2 = null;
+          //                 break;
+          //               }
+          //               tentativas++;
+          //             } while (novaPalavra1 === novaPalavra2 && tentativas < 5);
+          //           }
+                    
+          //           // Se não encontrou palavra com a mesma dificuldade, tenta sem filtro
+          //           if (!novaPalavraObj2) {
+          //             if (dificuldadeNova) {
+          //               console.warn(`⚠️ Não foi possível encontrar palavra com dificuldade ${dificuldadeNova}. Buscando sem filtro de dificuldade...`);
+          //             }
+          //             novaPalavraObj2 = await getRandomWord({ 
+          //               categoria: game.categoria, 
+          //               excluirPalavras: palavrasParaExcluir 
+          //             });
+          //             novaPalavra2 = (novaPalavraObj2?.palavra || 'FORCA').toUpperCase();
+          //           }
+                    
+          //           // Adiciona as novas palavras à lista de palavras usadas
+          //           if (!game.palavrasUsadas) {
+          //             game.palavrasUsadas = [];
+          //           }
+          //           game.palavrasUsadas.push(novaPalavra1);
+          //           if (novaPalavra1 !== novaPalavra2) {
+          //             game.palavrasUsadas.push(novaPalavra2);
+          //           }
+                    
+          //           // Reseta ambas as instâncias
+          //           game.words[0] = novaPalavra1;
+          //           game.words[1] = novaPalavra2;
+          //           game.gameInstances[0] = new Game(novaPalavra1, game.categoria);
+          //           game.gameInstances[1] = new Game(novaPalavra2, game.categoria);
+                    
+          //           // Atualiza as dicas das novas palavras
+          //           const dicasJogador1 = novaPalavraObj1?.dicas?.filter(d => d.ordem >= 1 && d.ordem <= 3) || [];
+          //           const dicasJogador2 = novaPalavraObj2?.dicas?.filter(d => d.ordem >= 1 && d.ordem <= 3) || [];
+          //           game.dicas = [dicasJogador1, dicasJogador2];
+                    
+          //           // Alterna o turno: quem começou a rodada anterior, o outro começa a próxima
+          //           const turnoAnterior = game.turnoInicialRodada || 1;
+          //           game.turno = turnoAnterior === 1 ? 2 : 1;
+          //           game.turnoInicialRodada = game.turno;
+                    
+          //           console.log(`✅ Nova rodada iniciada! Turno: Jogador ${game.turno}`);
+                    
+          //           // Atualiza o resultado do poder para incluir informações da nova rodada
+          //           resultadoPoder.novaRodada = true;
+          //           resultadoPoder.novaPalavraJogador1 = novaPalavra1;
+          //           resultadoPoder.novaPalavraJogador2 = novaPalavra2;
+          //           resultadoPoder.dicasJogador1 = dicasJogador1;
+          //           resultadoPoder.dicasJogador2 = dicasJogador2;
+          //         } catch (error) {
+          //           console.error('❌ Erro ao buscar novas palavras para nova rodada:', error);
+          //           console.error('Stack trace:', error.stack);
+          //         }
+          //       }
+          //     }
+              
+          //     const estadoAdversario = gameInstanceAdversario.getEstado();
+          //     resultadoPoder = {
+          //       tipo: 'tirarVida',
+          //       jogador: numeroJogador,
+          //       alvo: adversarioNum,
+          //       errosAdversario: estadoAdversario.erros,
+          //       novasVidas: vidasAtualizadas,
+          //       sucesso: true,
+          //       adversarioPerdeuVida: gameInstanceAdversario.erros >= 6
+          //     };
+          //     console.log(`⚔️ Erro adicionado à forca do adversário! Jogador ${adversarioNum} agora tem ${estadoAdversario.erros} erros${gameInstanceAdversario.erros >= 6 ? ' (perdeu uma vida!)' : ''}`);
+          //   } else {
+          //     resultadoPoder = {
+          //       tipo: 'tirarVida',
+          //       jogador: numeroJogador,
+          //       alvo: adversarioNum,
+          //       sucesso: false,
+          //       mensagem: 'Adversário não está em jogo'
+          //     };
+          //   }
+          //   break;
+          // }
             
           case 'liberar_letra': {
             // Revela uma letra da palavra do jogador (todas as ocorrências)

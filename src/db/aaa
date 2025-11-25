@@ -1,1 +1,22 @@
+-- QUERY PRA CRIAR O campaign_progress
 
+-- CREATE TABLE public.campaign_progress (
+--     id SERIAL PRIMARY KEY,
+
+--     usuario_id UUID NOT NULL,
+--     person_id INTEGER NOT NULL,
+--     word_index INTEGER NOT NULL,
+
+--     completed BOOLEAN NOT NULL DEFAULT TRUE
+-- );
+
+
+-- ALTER TABLE public.campaign_progress
+-- ADD CONSTRAINT campaign_progress_usuario_id_fkey
+-- FOREIGN KEY (usuario_id)
+-- REFERENCES public.usuario(id)
+-- ON DELETE CASCADE;
+
+
+-- CREATE UNIQUE INDEX campaign_progress_unique_idx
+-- ON public.campaign_progress (usuario_id, person_id, word_index);

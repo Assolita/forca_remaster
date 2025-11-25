@@ -391,11 +391,10 @@ header {
   }
   50% {
     transform: rotateY(90deg);
-    background: linear-gradient(180deg, #ff0000, #ff2a2a); /* vermelho vivo */
+
   }
   100% {
     transform: rotateY(180deg);
-    background: linear-gradient(180deg, #7a0000, #3b0000); /* vermelho sangue */
   }
 }
 /* Sangue escorrendo */
@@ -408,26 +407,8 @@ header {
   z-index: 2;
   pointer-events: none;
 
-  background:
-    /* vermelho claro */
-    radial-gradient(circle at 8% 12%,  #ff8a8a 2%, transparent 3%),
-    radial-gradient(circle at 25% 30%, #ff5757 2%, transparent 3%),
-    radial-gradient(circle at 40% 18%, #ff2d2d 1.8%, transparent 3%),
 
-    /* vermelho médio */
-    radial-gradient(circle at 70% 25%, #d40000 2.2%, transparent 3%),
-    radial-gradient(circle at 55% 40%, #b80000 2%, transparent 3%),
-    radial-gradient(circle at 85% 35%, #cc3030 1.5%, transparent 3%),
 
-    /* vermelho escuro */
-    radial-gradient(circle at 20% 70%, #7a0000 1.6%, transparent 3%),
-    radial-gradient(circle at 45% 85%, #660000 2%, transparent 3%),
-    radial-gradient(circle at 75% 78%, #8f0000 1.8%, transparent 3%),
-
-    /* vermelho bem saturado */
-    radial-gradient(circle at 32% 55%, #ff0000 2%, transparent 3%),
-    radial-gradient(circle at 62% 68%, #ff3333 2%, transparent 3%),
-    radial-gradient(circle at 90% 52%, #ff1a1a 1.6%, transparent 3%);
 
   background-size: 250px 250px;  /* mais disperso e natural */
   opacity: 0;

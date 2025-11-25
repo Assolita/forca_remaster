@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>README — Forca na Fenda</title>
+
+  <!-- Ícones -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Estilos do tema -->
+  <link rel="stylesheet" href="/public/src/styles/readme.css" />
+  <link rel="stylesheet" href="/public/src/styles/animations.css" />
+  <link rel="stylesheet" href="/public/src/styles/footer.css" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <a href="menu.html" class="btn-voltar" aria-label="Voltar ao menu">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+
+    <div class="icon-img">
+      <img src="public/assets/images/bob1.png" alt="Bob Esponja - Jogo da Forca">
+    </div>
+
+    <h1 class="fonte_titulo">README</h1>
+
+    <div class="icon-img">
+      <img src="public/assets/images/patrick1.png" alt="Patrick - Jogo da Forca">
+    </div>
+  </header>
+
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="regras-container" role="main">
+
+    <!-- ===========================
+         SOBRE O PROJETO
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-book"></i> Sobre o Projeto</h2>
+      <p>
+        <strong>Forca na Fenda</strong> é um jogo multiplayer da forca com poderes,
+        sistema de apostas, loja, progressão de campanha, ranking e sincronização em
+        tempo real via WebSockets. O jogo foi criado como projeto acadêmico e
+        apresenta diversas telas, modos e sistemas integrados.
+      </p>
+    </section>
+
+    <!-- ===========================
+         FLUXO DO JOGO
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-route"></i> Fluxo Completo para Jogar</h2>
+
+      <p>O fluxo principal de navegação é:</p>
+
+      <ul class="regras-lista">
+        <li>Menu inicial</li>
+        <li>Seleção de modo</li>
+        <li>Criação de sala (categorias)</li>
+        <li>Host / Guest</li>
+        <li>Preparação (poderes e apostas)</li>
+        <li>Gameplay sincronizado</li>
+        <li>Vitória ou derrota</li>
+      </ul>
+    </section>
+
+    <!-- ===========================
+         FUNCIONALIDADES PRINCIPAIS
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-sparkles"></i> Funcionalidades</h2>
+      <ul class="regras-lista">
+        <li>É divertido!</li>        
+        <li>Multiplayer via WebSocket</li>
+        <li>Monetização via sistema de poderes, com compra e uso</li>
+        <li>Apostas entre jogadores</li>
+        <li>Loja com inventário unitário</li>
+        <li>Modo campanha: para saber mais sobre os integrantes do projeto!</li>
+        <li>Ranking global</li>
+        <li>Autenticação (login e cadastro)</li>
+        <li>Seleção de categorias</li>
+      </ul>
+    </section>
+
+    <!-- ===========================
+         MODO CAMPANHA
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-dragon"></i> Modo Campanha</h2>
+      <p>
+        O modo campanha apresenta fases especiais baseadas nos integrantes do projeto.  
+        Cada fase possui:
+      </p>
+
+      <ul class="regras-lista">
+        <li>História própria</li>
+        <li>Palavras temáticas</li>
+        <li>Progresso salvo no banco</li>
+        <li>Recompensas ao completar</li>
+      </ul>
+    </section>
+
+    <!-- ===========================
+         TECNOLOGIAS
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-code"></i> Tecnologias</h2>
+      <ul class="regras-lista">
+        <li>Node.js</li>
+        <li>Express</li>
+        <li>WebSocket Nativo</li>
+        <li>Postgres + Sequelize</li>
+        <li>Supabase + Railway</li>
+        <li>HTML / CSS / JS</li>
+        <li>Animações personalizadas</li>
+      </ul>
+    </section>
+
+    <!-- ===========================
+         COMO RODAR
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-terminal"></i> Como Rodar</h2>
+
+      <p>Instale dependências:</p>
+      <pre><code>npm install</code></pre>
+
+      <p>Execute o servidor:</p>
+      <pre><code>npm start</code></pre>
+    </section>
+
+    <!-- ===========================
+         CRÉDITOS
+    ============================ -->
+    <section class="regras-bloco">
+      <h2><i class="fa-solid fa-users"></i> Créditos</h2>
+      <p>
+        Projeto desenvolvido pelos integrantes da equipe, que também são
+        homenageados no Modo Campanha.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+      <div id="footer">
+          <a href="./menu.html">
+            <img src="/public/assets/images/lua.png" alt="HOME" />
+          </a>
+
+          <ul>
+              <li><a href="./about us.html">diagramas</a></li>
+              <li><a href="https://github.com/gkdamaldade/forca_final_dev">repositório</a></li>
+              <li><a href="./regras.html">regras</a></li>
+          </ul>
+
+          <ul class="links">
+              <li><a href="https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2020/10/fatec-sao-paulo.jpg" target="_blank">FATEC</a></li>
+              <li><a href="https://media.licdn.com/dms/image/v2/C4E03AQHy3FyQCiIs_g/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1516230347808?e=2147483647&v=beta&t=jxOyJhhQyOt6z8_HRcrnN61op9xsWos9wN88ThR4j24" target="_blank">VITAO</a></li>
+          </ul>
+      </div>
+  </footer>
+
+</body>
+</html>
